@@ -11,12 +11,8 @@
         .magazine-shadow { box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
         .hover-scale { transition: transform 0.3s ease; cursor: pointer; }
         .hover-scale:hover { transform: scale(1.02); }
-        
-        /* 내부 팝업(모달) 스타일 */
         #article-modal { transition: opacity 0.3s ease; display: none; }
         #article-modal.active { display: flex; opacity: 1; }
-        .modal-content { transform: translateY(50px); transition: transform 0.3s ease; }
-        #article-modal.active .modal-content { transform: translateY(0); }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -26,31 +22,41 @@
             <div class="text-right"><p id="display-issue" class="font-bold text-lg"></p><p id="display-date" class="text-gray-500 text-sm"></p></div>
         </header>
 
+        <section class="mb-20 bg-black rounded-3xl overflow-hidden p-8 text-white grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+            <div class="lg:col-span-2 aspect-video rounded-2xl overflow-hidden">
+                <iframe id="video-frame" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div>
+                <span class="text-red-500 font-bold text-sm tracking-widest"><i class="fab fa-youtube mr-2"></i>MUST WATCH</span>
+                <h2 id="video-title" class="text-2xl font-black mt-4 mb-4"></h2>
+                <p id="video-desc" class="text-gray-400 text-sm leading-relaxed mb-6"></p>
+                <p id="video-source" class="text-xs text-gray-500"></p>
+            </div>
+        </section>
+
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 items-center">
-            <div class="rounded-3xl overflow-hidden magazine-shadow hover-scale" onclick="openArticle(reportData.main.link)">
+            <div class="rounded-3xl overflow-hidden magazine-shadow hover-scale" onclick="smartOpen(reportData.main.link)">
                 <img id="main-img" src="" class="w-full h-[450px] object-cover">
             </div>
             <div>
                 <span class="bg-black text-white px-3 py-1 text-xs font-bold rounded mb-4 inline-block">HEADLINE</span>
                 <h2 id="main-title" class="text-5xl font-black leading-tight mb-6"></h2>
                 <p id="main-desc" class="text-xl text-gray-600 leading-relaxed mb-8"></p>
-                <button onclick="openArticle(reportData.main.link)" class="border-b-2 border-black font-bold pb-1 hover:text-blue-600 hover:border-blue-600 transition text-left">READ FULL STORY <i class="fas fa-arrow-right ml-2"></i></button>
+                <button onclick="smartOpen(reportData.main.link)" class="border-b-2 border-black font-bold pb-1 hover:text-blue-600">READ FULL STORY <i class="fas fa-arrow-right ml-2"></i></button>
             </div>
         </section>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <section><h3 class="text-2xl font-black mb-8 flex items-center gap-2 border-b-2 border-gray-200 pb-2"><i class="fas fa-microchip text-blue-500"></i> AI TECHNOLOGY</h3><div id="ai-list" class="space-y-10"></div></section>
-            <section><h3 class="text-2xl font-black mb-8 flex items-center gap-2 border-b-2 border-gray-200 pb-2"><i class="fas fa-car text-blue-500"></i> AUTO PLATFORM</h3><div id="auto-list" class="space-y-10"></div></section>
+            <section><h3 class="text-2xl font-black mb-8 border-b-2 border-gray-200 pb-2">AI TECHNOLOGY</h3><div id="ai-list" class="space-y-10"></div></section>
+            <section><h3 class="text-2xl font-black mb-8 border-b-2 border-gray-200 pb-2">AUTO PLATFORM</h3><div id="auto-list" class="space-y-10"></div></section>
         </div>
     </div>
 
     <div id="article-modal" class="fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4">
-        <div class="modal-content bg-white w-full max-w-5xl h-[90vh] rounded-3xl overflow-hidden flex flex-col relative">
+        <div class="bg-white w-full max-w-5xl h-[90vh] rounded-3xl overflow-hidden flex flex-col relative">
             <div class="p-4 border-b flex justify-between items-center bg-gray-50">
-                <span class="text-xs font-bold text-gray-500">원문 기사 보기</span>
-                <button onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-red-500 transition">
-                    <i class="fas fa-times"></i>
-                </button>
+                <span class="text-xs font-bold text-gray-500">원문 리포트 보기</span>
+                <button onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full"><i class="fas fa-times"></i></button>
             </div>
             <iframe id="article-frame" src="" class="w-full h-full border-none"></iframe>
         </div>
@@ -58,41 +64,49 @@
 
     <script src="data.js"></script>
     <script>
-        // 기사 열기 함수
-        function openArticle(url) {
-            if(!url || url === "#") return;
-            const modal = document.getElementById('article-modal');
-            const iframe = document.getElementById('article-frame');
-            iframe.src = url;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+        // [분기처리] 아이프레임 차단 사이트 목록
+        const blockedSites = ['naver.com', 'chosun.com', 'newsis.com', 'donga.com', 'yna.co.kr'];
+
+        function smartOpen(url) {
+            const isBlocked = blockedSites.some(site => url.includes(site));
+            if (isBlocked) {
+                window.open(url, '_blank'); // 보안 사이트는 새창
+            } else {
+                document.getElementById('article-frame').src = url;
+                document.getElementById('article-modal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
-        // 기사 닫기 함수
         function closeArticle() {
-            const modal = document.getElementById('article-modal');
-            const iframe = document.getElementById('article-frame');
-            modal.classList.remove('active');
-            iframe.src = ""; // 리소스 초기화
-            document.body.style.overflow = 'auto'; // 스크롤 복구
+            document.getElementById('article-modal').classList.remove('active');
+            document.getElementById('article-frame').src = "";
+            document.body.style.overflow = 'auto';
         }
 
         window.onload = () => {
             if(typeof reportData === 'undefined') return;
             document.getElementById('display-issue').textContent = reportData.issue;
             document.getElementById('display-date').textContent = reportData.date;
+            
+            // Video Set
+            document.getElementById('video-frame').src = `https://www.youtube.com/embed/${reportData.video.youtubeId}`;
+            document.getElementById('video-title').textContent = reportData.video.title;
+            document.getElementById('video-desc').textContent = reportData.video.desc;
+            document.getElementById('video-source').textContent = `Source: ${reportData.video.source}`;
+
             document.getElementById('main-title').textContent = reportData.main.title;
             document.getElementById('main-desc').textContent = reportData.main.desc;
             document.getElementById('main-img').src = reportData.main.img;
 
             const renderList = (data, containerId) => {
                 document.getElementById(containerId).innerHTML = data.map(item => `
-                    <div class="flex gap-4 group hover-scale" onclick="openArticle('${item.link}')">
+                    <div class="flex gap-4 group hover-scale" onclick="smartOpen('${item.link}')">
                         <img src="${item.img}" class="w-28 h-28 rounded-2xl object-cover magazine-shadow flex-shrink-0 bg-gray-200">
                         <div class="flex-grow">
                             <div class="flex justify-between items-center mb-1">
-                                ${item.cat ? `<span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">${item.cat}</span>` : ''}
-                                ${item.source ? `<span class="text-[10px] font-medium text-gray-400 italic">${item.source}</span>` : ''}
+                                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">${item.cat || 'TECH'}</span>
+                                <span class="text-[10px] font-medium text-gray-400 italic">${item.source}</span>
                             </div>
                             <h4 class="font-bold text-lg group-hover:text-blue-600 leading-snug">${item.title}</h4>
                             <p class="text-sm text-gray-500 line-clamp-2 mt-1">${item.desc}</p>
@@ -100,11 +114,6 @@
                     </div>`).join('');
             };
             renderList(reportData.ai, 'ai-list'); renderList(reportData.auto, 'auto-list');
-        };
-
-        // ESC 키로 팝업 닫기
-        window.onkeydown = function(event) {
-            if (event.keyCode == 27) closeArticle();
         };
     </script>
 </body>
