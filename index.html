@@ -2,15 +2,21 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오토핸즈 주간 리포트</title>
+    <title>오토핸즈 기술/업계 동향 매거진</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
-        body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; transition: background 0.3s; }
+        body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
         .magazine-shadow { box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
         .hover-scale { transition: transform 0.3s ease; cursor: pointer; }
         .hover-scale:hover { transform: scale(1.02); }
+        
+        /* 내부 팝업(모달) 스타일 */
+        #article-modal { transition: opacity 0.3s ease; display: none; }
+        #article-modal.active { display: flex; opacity: 1; }
+        .modal-content { transform: translateY(50px); transition: transform 0.3s ease; }
+        #article-modal.active .modal-content { transform: translateY(0); }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -19,37 +25,69 @@
             <div><h2 class="text-blue-600 font-bold tracking-tighter">AUTOHANDS R&D CENTER</h2><h1 class="text-4xl font-black italic">WEEKLY MAGAZINE</h1></div>
             <div class="text-right"><p id="display-issue" class="font-bold text-lg"></p><p id="display-date" class="text-gray-500 text-sm"></p></div>
         </header>
+
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 items-center">
-            <div class="rounded-3xl overflow-hidden magazine-shadow hover-scale"><img id="main-img" src="" class="w-full h-[450px] object-cover"></div>
-            <div><span class="bg-black text-white px-3 py-1 text-xs font-bold rounded mb-4 inline-block">HOT ISSUE</span>
-                <h2 id="main-title" class="text-5xl font-black leading-tight mb-6"></h2><p id="main-desc" class="text-xl text-gray-600 leading-relaxed mb-8"></p>
-                <a id="main-link" href="#" target="_blank" class="border-b-2 border-black font-bold pb-1 hover:text-blue-600 hover:border-blue-600 transition">READ MORE <i class="fas fa-arrow-right ml-2"></i></a>
+            <div class="rounded-3xl overflow-hidden magazine-shadow hover-scale" onclick="openArticle(reportData.main.link)">
+                <img id="main-img" src="" class="w-full h-[450px] object-cover">
+            </div>
+            <div>
+                <span class="bg-black text-white px-3 py-1 text-xs font-bold rounded mb-4 inline-block">HEADLINE</span>
+                <h2 id="main-title" class="text-5xl font-black leading-tight mb-6"></h2>
+                <p id="main-desc" class="text-xl text-gray-600 leading-relaxed mb-8"></p>
+                <button onclick="openArticle(reportData.main.link)" class="border-b-2 border-black font-bold pb-1 hover:text-blue-600 hover:border-blue-600 transition text-left">READ FULL STORY <i class="fas fa-arrow-right ml-2"></i></button>
             </div>
         </section>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <section><h3 class="text-2xl font-black mb-8 flex items-center gap-2"><i class="fas fa-microchip text-blue-500"></i> AI TECH</h3><div id="ai-list" class="space-y-10"></div></section>
-            <section><h3 class="text-2xl font-black mb-8 flex items-center gap-2"><i class="fas fa-car text-blue-500"></i> AUTO TREND</h3><div id="auto-list" class="space-y-10"></div></section>
+            <section><h3 class="text-2xl font-black mb-8 flex items-center gap-2 border-b-2 border-gray-200 pb-2"><i class="fas fa-microchip text-blue-500"></i> AI TECHNOLOGY</h3><div id="ai-list" class="space-y-10"></div></section>
+            <section><h3 class="text-2xl font-black mb-8 flex items-center gap-2 border-b-2 border-gray-200 pb-2"><i class="fas fa-car text-blue-500"></i> AUTO PLATFORM</h3><div id="auto-list" class="space-y-10"></div></section>
         </div>
     </div>
-<script src="data.js"></script>
+
+    <div id="article-modal" class="fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4">
+        <div class="modal-content bg-white w-full max-w-5xl h-[90vh] rounded-3xl overflow-hidden flex flex-col relative">
+            <div class="p-4 border-b flex justify-between items-center bg-gray-50">
+                <span class="text-xs font-bold text-gray-500">원문 기사 보기</span>
+                <button onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-red-500 transition">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <iframe id="article-frame" src="" class="w-full h-full border-none"></iframe>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
     <script>
+        // 기사 열기 함수
+        function openArticle(url) {
+            if(!url || url === "#") return;
+            const modal = document.getElementById('article-modal');
+            const iframe = document.getElementById('article-frame');
+            iframe.src = url;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+        }
+
+        // 기사 닫기 함수
+        function closeArticle() {
+            const modal = document.getElementById('article-modal');
+            const iframe = document.getElementById('article-frame');
+            modal.classList.remove('active');
+            iframe.src = ""; // 리소스 초기화
+            document.body.style.overflow = 'auto'; // 스크롤 복구
+        }
+
         window.onload = () => {
             if(typeof reportData === 'undefined') return;
-
-            // 상단 이슈 및 날짜 정보
             document.getElementById('display-issue').textContent = reportData.issue;
             document.getElementById('display-date').textContent = reportData.date;
-
-            // 메인 헤드라인 섹션
             document.getElementById('main-title').textContent = reportData.main.title;
             document.getElementById('main-desc').textContent = reportData.main.desc;
             document.getElementById('main-img').src = reportData.main.img;
-            document.getElementById('main-link').href = reportData.main.link;
 
-            // 리스트 렌더링 함수 (출처 정보 추가 버전)
             const renderList = (data, containerId) => {
                 document.getElementById(containerId).innerHTML = data.map(item => `
-                    <div class="flex gap-4 group hover-scale" onclick="if('${item.link}') window.open('${item.link}', '_blank')">
+                    <div class="flex gap-4 group hover-scale" onclick="openArticle('${item.link}')">
                         <img src="${item.img}" class="w-28 h-28 rounded-2xl object-cover magazine-shadow flex-shrink-0 bg-gray-200">
                         <div class="flex-grow">
                             <div class="flex justify-between items-center mb-1">
@@ -61,10 +99,12 @@
                         </div>
                     </div>`).join('');
             };
+            renderList(reportData.ai, 'ai-list'); renderList(reportData.auto, 'auto-list');
+        };
 
-            // AI 섹션과 Auto 섹션 뿌려주기
-            renderList(reportData.ai, 'ai-list');
-            renderList(reportData.auto, 'auto-list');
+        // ESC 키로 팝업 닫기
+        window.onkeydown = function(event) {
+            if (event.keyCode == 27) closeArticle();
         };
     </script>
 </body>
