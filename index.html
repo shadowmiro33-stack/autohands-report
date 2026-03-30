@@ -221,8 +221,14 @@
             renderItems(data.auto, 'auto-list');
         }
 
-        window.onload = () => {
-            const today = "2026-03-31"; 
+window.onload = () => {
+            // 💡 접속한 컴퓨터(브라우저)의 '진짜 오늘 날짜'를 자동으로 세팅
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const today = `${year}-${month}-${day}`; // 오늘이 30일이면 "2026-03-30" 생성
+            
             document.getElementById('date-picker').value = today;
             loadReport(today);
         };
