@@ -89,9 +89,6 @@ var archiveData = {
             { "brand": "차봇", "title": "FT '아태 고성장 기업' 3년 연속 선정 쾌거", "desc": "국내 IT/SW 부문 15위에 오르며 강력한 성장성을 입증했습니다.", "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400", "link": "https://v.daum.net/v/xLghLWzttd", "source": "한스경제" },
             { "brand": "헤이딜러", "title": "한국타이어와 중고차 타이어 공급 협력 강화", "desc": "인증 중고차의 상품화 품질 제고를 위해 타이어 기업과 협력합니다.", "img": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=400", "link": "https://www.yna.co.kr/view/AKR20260317120300003", "source": "연합뉴스" },
             { "brand": "현대캐피탈", "title": "기아 인증중고차 전용 2.9% 저금리 상품 출시", "desc": "캡티브 금융사의 자본력을 활용한 공격적 마케팅입니다.", "img": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400", "link": "https://www.hyundaimotorgroup.com/ko/news/CONT0000000000206594", "source": "현대차그룹" },
-            { "brand": "카바나(Carvana)", "title": "미국 카바나 주식 분할 및 물류 효율화 발표", "desc": "물류 효율화와 수익성 개선을 기반으로 이커머스 패권을 공고히 합니다.", "img": "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400", "link": "https://investors.carvana.com/news-releases/2026", "source": "Carvana IR" },
-            { "brand": "투루카", "title": "주말 전 차종 50% 할인으로 시장 점유율 공세", "desc": "휴맥스 인프라를 활용해 점유율 확대를 꾀하고 있습니다.", "img": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400", "link": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=642720", "source": "디지털투데이" },
-            { "brand": "카와우(Carwow)", "title": "영국 카와우 온라인 판매 채널 대폭 확대", "desc": "온라인 플랫폼과 오프라인 딜러의 상생 모델을 구축했습니다.", "img": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400", "link": "https://www.carwow.co.uk/news", "source": "Carwow News" }
         ]
     }
 };
