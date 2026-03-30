@@ -18,42 +18,53 @@ var archiveData = {
             source: "이코노믹리뷰",
             insight: "현대차의 직진출은 제조사 중심의 플랫폼 통합을 의미합니다. 당사의 글로벌 중개 플랫폼 비즈니스와 연계하여 데이터 분석 시스템을 더욱 정교화해야 합니다."
         },
-        ai: [
+       ai: [
             { 
                 isImportant: true, 
-                brand: "구글", 
-                title: "구글, AI 메모리 효율 10배 높인 '터보퀀트' 신기술 공개", 
-                desc: "AI 구동 시 발생하는 막대한 메모리 부하를 줄여 저사양 기기에서도 고성능 AI를 돌릴 수 있는 기술입니다.", 
-                img: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=400", 
-                link: "https://www.yna.co.kr/view/AKR20260327109100003", 
-                source: "연합뉴스",
-                insight: "온디바이스 AI 트렌드에 대응하기 위한 핵심 기술입니다. 당사 모바일 앱 내에 가벼운 AI 기능을 탑재할 때 클라우드 비용을 절감할 수 있는 전략적 대안이 될 수 있습니다."
+                brand: "AI타임스", 
+                title: "사카나 AI, 시스템이 100% 자체 작성한 논문이 사상 첫 '네이처' 게재", 
+                desc: "AI가 가설 설정부터 실험, 검증까지 전 과정을 스스로 수행해 낸 연구 결과가 세계 최고 권위지에 실렸습니다.", 
+                img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400", 
+                link: "https://www.aitimes.com/news/articleView.html?idxno=162621", 
+                source: "AI타임스",
+                insight: "R&D 센터의 선행 연구 및 글로벌 트렌드 리서치 업무에 이와 같은 자율형 에이전트 AI를 도입하면 업무 효율을 5배 이상 높일 수 있습니다."
             },
             { 
                 isImportant: true, 
                 brand: "델로이트", 
                 title: "에이전틱 AI 시대의 커머스 미래와 결제 산업", 
-                desc: "AI 에이전트가 직접 판단하고 거래를 실행하는 '에이전틱 커머스'가 미래 결제 산업의 핵심으로 부상하고 있습니다.", 
+                desc: "AI 에이전트가 직접 판단하고 결제까지 실행하는 '에이전틱 커머스'가 미래 쇼핑의 핵심으로 부상하고 있습니다.", 
                 img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400", 
                 link: "https://www.deloitte.com/kr/ko/Industries/financial-services/perspectives/future-of-commerce-agentic-ai.html", 
                 source: "Deloitte Korea",
-                insight: "복잡한 예약 및 결제 프로세스를 획기적으로 간소화하여 사용자 경험을 극대화할 수 있습니다."
+                insight: "당사의 외국인 대상 서비스 결제 모듈에 에이전틱 커머스 환경을 미리 구축하면 글로벌 고객의 예약 허들을 획기적으로 낮출 수 있습니다."
             },
             { 
-                isImportant: true, 
-                brand: "GeekNews", 
-                title: "데이터 엔지니어링: 에이전트 중심 설계", 
-                desc: "단순 통계 조회를 넘어 AI 에이전트가 기본 사용자로 작동하는 환경을 전제로 한 인프라 설계가 주목받고 있습니다.", 
-                img: "https://images.unsplash.com/photo-1558494949-ef0109121c64?w=400", 
-                link: "https://news.hada.io/topic?id=26155", 
-                source: "GeekNews",
-                insight: "AI가 직접 데이터를 조회하고 보고서를 생성할 수 있는 구조로 설계하여 리소스 효율성을 높여야 합니다."
+                brand: "지디넷코리아", 
+                title: "생성형 AI, 기업 생산성 40% 높인다... 실제 도입 사례 급증", 
+                desc: "단순 챗봇을 넘어 실무 프로세스에 AI를 결합하여 실질적인 비용 절감 성과를 내는 기업 분석 보고서입니다.", 
+                img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400", 
+                link: "https://zdnet.co.kr/view/?no=20241121102555", 
+                source: "지디넷코리아" 
             },
-            { brand: "지디넷코리아", title: "생성형 AI, 기업 생산성 40% 높인다... 실제 도입 사례 급증", desc: "국내외 주요 기업들이 단순 챗봇을 넘어 실무 프로세스에 AI를 결합하여 실질적인 성과를 내기 시작했습니다.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400", link: "https://zdnet.co.kr/view/?no=20241121102555", source: "지디넷코리아" },
-            { brand: "연합뉴스", title: "인공지능이 뉴스도 팩트체크... 진화하는 AI 검증 기술", desc: "허위 정보 확산을 막기 위해 AI가 실시간으로 데이터의 진위 여부를 판별하는 기술이 고도화되고 있습니다.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400", link: "https://www.yna.co.kr/view/AKR20240325088200017", source: "연합뉴스" },
-            { brand: "AI타임스", title: "AI 법(AI Act) 본격화: 고위험 AI에 대한 규제 가이드라인 확정", desc: "글로벌 시장 진출을 위해 반드시 준수해야 할 AI 윤리 및 보안 규제가 구체화되었습니다.", img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=158221", source: "AI타임스" }
-        ],
-        auto: [
+            { 
+                brand: "AI타임스", 
+                title: "AI 법(AI Act) 본격화: 고위험 AI에 대한 규제 가이드라인 확정", 
+                desc: "유럽을 중심으로 시작된 강력한 AI 규제안이 글로벌 시장 진출의 필수 준수 사항이 되었습니다.", 
+                img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400", 
+                link: "https://www.aitimes.com/news/articleView.html?idxno=158221", 
+                source: "AI타임스" 
+            },
+            { 
+                brand: "GeekNews", 
+                title: "데이터 엔지니어링: AI 에이전트 중심의 인프라 설계", 
+                desc: "사람이 아닌 AI가 주도적으로 데이터를 처리하고 리포트를 생성하는 차세대 아키텍처 트렌드입니다.", 
+                img: "https://images.unsplash.com/photo-1558494949-ef0109121c64?w=400", 
+                link: "https://news.hada.io/topic?id=16155", 
+                source: "GeekNews" 
+            }
+],
+           auto: [
             { 
                 isImportant: true,
                 brand: "K-Car", 
