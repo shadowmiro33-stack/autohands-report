@@ -78,7 +78,7 @@ var archiveData = {
                 "brand": "케이카",
                 "title": "케이카, 4월 중고차 시세 하락 전망… 고유가 여파에 '숨고르기'",
                 "desc": "대외 불확실성 확대로 4월 국산차 -2.0%, 수입차 -3.3% 하락이 예상되나, 아반떼·니로 등 1500만원대 실속형 모델은 수요가 견조합니다.",
-                "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400",
+                "img": "https://cdn.cartvnews.com/news/photo/202603/700999_401746_5428.jpg",
                 "link": "https://www.cartvnews.com/news/articleView.html?idxno=700999",
                 "source": "교통뉴스",
                 "insight": "고유가 국면에서 유지비가 낮은 실속형 모델의 시세 방어 현상이 뚜렷합니다. 당사의 차량 매입 채널에서도 대형차보다는 준중형 이하 및 가성비 전기차 위주의 포트폴리오를 구성해 재고 회전율을 높여야 합니다."
@@ -87,7 +87,7 @@ var archiveData = {
                 "brand": "엔카(Encar)",
                 "title": "성수 팝업 '엔카라지' 성료 및 MZ세대 소통 강화",
                 "desc": "중고차 거래 전 과정을 오프라인 체험으로 풀어낸 혁신 사례입니다.",
-                "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400",
+                "img": "https://wimg.mk.co.kr/news/cms/202603/25/news-p.v1.20260325.4dc4e2868d404851b42fccafd463a14b_P1.jpg",
                 "link": "https://www.mk.co.kr/news/business/11997601",
                 "source": "매일경제"
             },
@@ -95,7 +95,7 @@ var archiveData = {
                 "brand": "쏘카(Socar)",
                 "title": "프리미엄 '블랙라벨' 100대 확충으로 수익성 개선",
                 "desc": "수입차 라인업 확대로 법인 및 장거리 수요를 선점했습니다.",
-                "img": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400",
+                "img": "https://cdn.platum.kr/wp-content/uploads/2026/03/black.png",
                 "link": "https://platum.kr/archives/283833",
                 "source": "플래텀"
             },
