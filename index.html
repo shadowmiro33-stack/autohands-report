@@ -11,6 +11,10 @@
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .hover-scale { transition: transform 0.3s ease; }
         .hover-scale:hover { transform: translateY(-4px); }
+        
+        /* 💡 아이프레임 모달용 CSS 복구 */
+        #article-modal { display: none; }
+        #article-modal.active { display: flex; }
     </style>
 </head>
 <body>
@@ -40,9 +44,39 @@
         </div>
     </div>
 
+    <div id="article-modal" class="fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4">
+        <div class="bg-white w-full max-w-5xl h-[90vh] rounded-3xl overflow-hidden flex flex-col relative shadow-2xl">
+            <div class="p-4 border-b flex justify-between items-center bg-gray-50">
+                <span class="text-xs font-bold text-gray-500">원문 리포트 뷰어</span>
+                <button onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition"><i class="fas fa-times"></i></button>
+            </div>
+            <iframe id="article-frame" src="" class="w-full h-full border-none"></iframe>
+        </div>
+    </div>
+
     <script src="./data.js"></script>
     
     <script>
+        // 💡 분기 처리 로직 복구 (보안 강한 사이트만 새창)
+        const blockedSites = ['naver.com', 'chosun.com', 'newsis.com', 'donga.com', 'yna.co.kr', 'edaily.co.kr'];
+
+        function smartOpen(url) {
+            const isBlocked = blockedSites.some(site => url.includes(site));
+            if (isBlocked) {
+                window.open(url, '_blank'); // 거부 사이트는 새창
+            } else {
+                document.getElementById('article-frame').src = url;
+                document.getElementById('article-modal').classList.add('active');
+                document.body.style.overflow = 'hidden'; // 뒤에 스크롤 방지
+            }
+        }
+
+        function closeArticle() {
+            document.getElementById('article-modal').classList.remove('active');
+            document.getElementById('article-frame').src = "";
+            document.body.style.overflow = 'auto'; // 스크롤 원복
+        }
+
         function getYoutubeEmbed(url) {
             let id = '';
             if (url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
@@ -71,6 +105,7 @@
 
             document.getElementById('display-issue').textContent = data.issue;
             
+            // 💡 onclick 이벤트를 모두 smartOpen()으로 원복!
             content.innerHTML = `
                 <section class="mb-16 bg-black rounded-3xl overflow-hidden p-8 text-white grid grid-cols-1 lg:grid-cols-3 gap-10 items-center shadow-lg">
                     <div class="lg:col-span-2 aspect-video rounded-2xl overflow-hidden bg-gray-900 shadow-2xl">
@@ -84,14 +119,14 @@
                 </section>
 
                 <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 items-center">
-                    <div class="rounded-3xl overflow-hidden shadow-xl cursor-pointer hover-scale" onclick="window.open('${data.main.link}')">
+                    <div class="rounded-3xl overflow-hidden shadow-xl cursor-pointer hover-scale" onclick="smartOpen('${data.main.link}')">
                         <img src="${data.main.img}" class="w-full h-[450px] object-cover bg-gray-200">
                     </div>
                     <div>
                         <span class="bg-blue-900 text-white px-3 py-1 text-xs font-bold rounded mb-4 inline-block tracking-widest">OASIS HEADLINE</span>
                         <h2 class="text-4xl font-black leading-tight mb-6 tracking-tighter">${data.main.title}</h2>
                         <p class="text-lg text-gray-600 mb-8 leading-relaxed">${data.main.desc}</p>
-                        <button onclick="window.open('${data.main.link}')" class="font-bold text-lg border-b-2 border-black pb-1 hover:text-blue-600 hover:border-blue-600 transition">본문 읽기 →</button>
+                        <button onclick="smartOpen('${data.main.link}')" class="font-bold text-lg border-b-2 border-black pb-1 hover:text-blue-600 hover:border-blue-600 transition">본문 읽기 →</button>
                     </div>
                 </section>
 
@@ -109,7 +144,7 @@
 
             const renderItems = (items, id) => {
                 document.getElementById(id).innerHTML = items.map(item => `
-                    <div class="flex gap-4 cursor-pointer group hover-scale bg-white p-3 rounded-2xl shadow-sm border border-gray-100" onclick="window.open('${item.link}')">
+                    <div class="flex gap-4 cursor-pointer group hover-scale bg-white p-3 rounded-2xl shadow-sm border border-gray-100" onclick="smartOpen('${item.link}')">
                         <img src="${item.img || 'https://via.placeholder.com/100'}" class="w-24 h-24 rounded-xl object-cover bg-gray-200 flex-shrink-0">
                         <div class="flex flex-col justify-center">
                             <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1">${item.source}</span>
