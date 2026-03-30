@@ -44,16 +44,12 @@
         <div class="bg-white w-[95vw] max-w-[1600px] h-[95vh] rounded-2xl overflow-hidden flex flex-col relative shadow-2xl" onclick="event.stopPropagation()">
             <div class="p-3 border-b flex justify-between items-center bg-gray-50">
                 <span class="text-sm font-bold text-gray-600 ml-3">OASIS 원문 리포트 뷰어</span>
-                <div class="flex gap-2">
-                    <button type="button" id="modal-header-btn" class="px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded-lg hover:bg-blue-700 transition shadow-sm">
-                        새 창으로 보기 <i class="fas fa-external-link-alt ml-1"></i>
-                    </button>
-                    <button type="button" onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-800 rounded-lg hover:bg-black hover:text-white transition">
-                        <i class="fas fa-times text-lg"></i>
-                    </button>
-                </div>
+                <button type="button" onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-800 rounded-lg hover:bg-black hover:text-white transition">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
             </div>
             <iframe id="article-frame" src="" class="w-full h-full border-none bg-white"></iframe>
+            
             <div id="fallback-ui" class="w-full h-full flex flex-col items-center justify-center bg-gray-50 hidden">
                 <i class="fas fa-shield-alt text-6xl text-gray-300 mb-6"></i>
                 <h3 class="text-2xl font-black text-gray-800 mb-2">보안 정책이 적용된 언론사입니다</h3>
@@ -68,6 +64,7 @@
     <script src="./data.js"></script>
     
     <script>
+        // 국내 주요 차단 언론사 리스트
         const blockedSites = [
             'naver.com', 'daum.net', 'chosun.com', 'joongang.co.kr', 'donga.com', 
             'mk.co.kr', 'hankyung.com', 'sedaily.com', 'fnnews.com', 'edaily.co.kr',
@@ -82,18 +79,17 @@
             const frame = document.getElementById('article-frame');
             const fallback = document.getElementById('fallback-ui');
             const fallbackBtn = document.getElementById('fallback-btn');
-            const headerBtn = document.getElementById('modal-header-btn');
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            headerBtn.onclick = () => { window.open(url, '_blank'); closeArticle(); };
-
             if (isBlocked) {
+                // 막힌 사이트: iframe 숨기고 중앙 가이드 버튼 노출
                 frame.style.display = 'none';
                 fallback.style.display = 'flex';
                 fallbackBtn.onclick = () => { window.open(url, '_blank'); closeArticle(); };
             } else {
+                // 열리는 사이트: iframe 노출하고 중앙 가이드 버튼 숨김
                 frame.style.display = 'block';
                 fallback.style.display = 'none';
                 frame.src = url;
@@ -119,7 +115,6 @@
             return `https://www.youtube.com/embed/${id}`;
         }
 
-        // 💡 원복 핵심 포인트: fetch를 없애고 기존 archiveData 변수에서 바로 읽어오기
         function loadReport(date) {
             const content = document.getElementById('magazine-content');
 
@@ -221,13 +216,12 @@
             renderItems(data.auto, 'auto-list');
         }
 
-window.onload = () => {
-            // 💡 접속한 컴퓨터(브라우저)의 '진짜 오늘 날짜'를 자동으로 세팅
+        window.onload = () => {
             const now = new Date();
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
-            const today = `${year}-${month}-${day}`; // 오늘이 30일이면 "2026-03-30" 생성
+            const today = `${year}-${month}-${day}`; 
             
             document.getElementById('date-picker').value = today;
             loadReport(today);
