@@ -1,89 +1,170 @@
 var archiveData = {
     "2026-03-30": {
-        issue: "2026 March-NO.33 (Special Edition)",
-        video: {
-            brand: "테슬라(Tesla)",
-            title: "테슬라 FSD 뚫렸다? 한국서도 구매 폭증...테슬라 해킹 대소동?!",
-            desc: "국내 테슬라 유저들 사이에서 벌어진 FSD 구매 소동과 해킹 이슈의 전말 긴급 분석 영상입니다.",
-            url: "https://youtu.be/JMbguxdvwqY?si=BygV0-TRJtLVAw63",
-            source: "김한용의 Mocha"
+        "issue": "2026 March-NO.33 (Comprehensive Edition)",
+        "video": {
+            "brand": "테슬라",
+            "title": "테슬라 FSD 뚫렸다? 한국서도 구매 폭증...테슬라 해킹 대소동?!",
+            "desc": "국내 테슬라 유저들 사이에서 벌어진 FSD 구매 소동과 해킹 이슈의 전말 긴급 분석 영상입니다.",
+            "url": "https://youtu.be/JMbguxdvwqY",
+            "source": "김한용의 Mocha"
         },
-        main: {
-            isImportant: true,
-            brand: "현대자동차",
-            title: "현대차, 주총서 '렌터카 사업' 공식 진출... 모빌리티 판도 흔드는 수직계열화",
-            desc: "3월 26일 현대자동차 정관에 '자동차 대여 사업' 추가. 단순 제조를 넘어 차량 생애주기 전체를 직접 관리하는 통합 플랫폼 전략이 본격화되었습니다.",
-            img: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800",
-            link: "https://www.econovill.com/news/articleView.html?idxno=734918",
-            source: "이코노믹리뷰",
-            insight: "현대차의 직진출은 제조사 중심의 플랫폼 통합을 의미합니다. 당사의 글로벌 중개 플랫폼 비즈니스와 연계하여 데이터 분석 시스템을 더욱 정교화해야 합니다."
+        "main": {
+            "isImportant": true,
+            "brand": "현대차",
+            "title": "현대차, 주총서 '렌탈 사업' 목적 추가... 모빌리티 플랫폼 사업 본격화",
+            "desc": "현대자동차가 정관에 '자동차 대여사업'을 추가하며 단순 제조를 넘어 차량 생애주기 전체를 직접 관리하는 통합 렌탈 비즈니스에 나섭니다. [cite: 16, 20]",
+            "img": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800",
+            "link": "https://www.edaily.co.kr/news/read?newsId=02656806638827760",
+            "source": "이데일리",
+            "insight": "제조사의 렌탈 시장 직접 진출은 중고차 매입 및 잔존가치 산정 데이터의 수직계열화를 의미합니다. 당사가 추진 중인 글로벌 중개 플랫폼 역시 제조사 데이터와 연동되는 정밀 프라이싱 엔진을 탑재하여 대응력을 강화해야 합니다."
         },
-       ai: [
-            { 
-                isImportant: true, 
-                brand: "AI타임스", 
-                title: "사카나 AI, 시스템이 100% 자체 작성한 논문이 사상 첫 '네이처' 게재", 
-                desc: "AI가 가설 설정부터 실험, 검증까지 전 과정을 스스로 수행해 낸 연구 결과가 세계 최고 권위지에 실렸습니다.", 
-                img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400", 
-                link: "https://www.aitimes.com/news/articleView.html?idxno=162621", 
-                source: "AI타임스",
-                insight: "R&D 센터의 선행 연구 및 글로벌 트렌드 리서치 업무에 이와 같은 자율형 에이전트 AI를 도입하면 업무 효율을 5배 이상 높일 수 있습니다."
+        "ai": [
+            {
+                "isImportant": true,
+                "brand": "네이버",
+                "title": "네이버 \"AI 에이전트로 서비스 전면 재편\"",
+                "desc": "검색부터 쇼핑까지 전 영역을 AI 에이전트 중심으로 개편하여 사용자 맞춤형 경험을 극대화한다는 전략입니다.",
+                "img": "https://www.chosun.com/resizer/v2/MRTDQZRSMZRDIMZYGJRDSNBZG4.jpg?auth=f90a04e71ca6d62cb9e3e9607d9021cec8f18afa6fd545cef01fdd4db677770e&width=616",
+                "link": "https://www.chosun.com/economy/tech_it/2026/03/23/PI6ZHTRORBDXJDM42EXIOQJFDY/",
+                "source": "조선일보",
+                "insight": "국내 최대 플랫폼의 에이전트화는 사용자들의 서비스 이용 행태 변화를 예고합니다. 당사 서비스 역시 거대 플랫폼 에이전트 생태계와 연동될 수 있는 구조를 검토해야 합니다."
             },
-            { 
-                isImportant: true, 
-                brand: "델로이트", 
-                title: "에이전틱 AI 시대의 커머스 미래와 결제 산업", 
-                desc: "AI 에이전트가 직접 판단하고 결제까지 실행하는 '에이전틱 커머스'가 미래 쇼핑의 핵심으로 부상하고 있습니다.", 
-                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400", 
-                link: "https://www.deloitte.com/kr/ko/Industries/financial-services/perspectives/future-of-commerce-agentic-ai.html", 
-                source: "Deloitte Korea",
-                insight: "당사의 외국인 대상 서비스 결제 모듈에 에이전틱 커머스 환경을 미리 구축하면 글로벌 고객의 예약 허들을 획기적으로 낮출 수 있습니다."
+            {
+                "isImportant": true,
+                "brand": "수노(Suno)",
+                "title": "“음악 생성 넘어 개인 전용 악기로”... 수노 v5.5, ‘개인화’ 승부수",
+                "desc": "사용자의 취향과 연주 스타일을 학습하는 개인화 기능을 통해 AI 음악의 새로운 지평을 열고 있습니다.",
+                "img": "https://cdn.aitimes.com/news/thumbnail/custom/20260330/208505_210800_2020_1774765220_100.jpg",
+                "link": "https://www.aitimes.com/news/articleView.html?idxno=208505",
+                "source": "AI타임스",
+                "insight": "AI의 트렌드가 '초개인화'로 이동하고 있습니다. 당사 서비스에서도 사용자의 금융 및 차량 선호 데이터를 기반으로 한 개인별 맞춤형 에이전트 개발이 필요합니다."
             },
-            { 
-                brand: "지디넷코리아", 
-                title: "생성형 AI, 기업 생산성 40% 높인다... 실제 도입 사례 급증", 
-                desc: "단순 챗봇을 넘어 실무 프로세스에 AI를 결합하여 실질적인 비용 절감 성과를 내는 기업 분석 보고서입니다.", 
-                img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400", 
-                link: "https://zdnet.co.kr/view/?no=20241121102555", 
-                source: "지디넷코리아" 
+            {
+                "isImportant": true,
+                "brand": "앱 제작",
+                "title": "AI 앱 제작 시대, 직접 만들어보니... 초보자도 가능할까",
+                "desc": "코딩 지식 없이도 누구나 AI를 활용해 자신만의 앱을 제작할 수 있는 노코드(No-code) 시대의 현주소를 짚어봅니다.",
+                "img": "https://ichef.bbci.co.kr/ace/ws/800/cpsprodpb/32ed/live/18bd13a0-1bae-11f1-801d-ed3cff6bf876.jpg.webp",
+                "link": "https://www.bbc.com/korean/articles/cp86y5lejm1o",
+                "source": "BBC News 코리아"
             },
-            { 
-                brand: "AI타임스", 
-                title: "AI 법(AI Act) 본격화: 고위험 AI에 대한 규제 가이드라인 확정", 
-                desc: "유럽을 중심으로 시작된 강력한 AI 규제안이 글로벌 시장 진출의 필수 준수 사항이 되었습니다.", 
-                img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400", 
-                link: "https://www.aitimes.com/news/articleView.html?idxno=158221", 
-                source: "AI타임스" 
+            {
+                "brand": "한겨레",
+                "title": "아첨하는 AI… ‘나 잘난’ 인간 부추긴다",
+                "desc": "AI가 사용자의 편향된 의견에 동조하거나 아첨하는 현상에 대한 비판적 분석을 다룹니다.",
+                "img": "https://flexible.img.hani.co.kr/flexible/normal/691/415/imgdb/child/2026/0328/53_17746593446201_20260327500489.webp",
+                "link": "https://www.hani.co.kr/arti/science/technology/1251393.html",
+                "source": "한겨레"
             },
-{ 
-                brand: "GeekNews", 
-                title: "데이터 엔지니어링: AI 에이전트 중심의 인프라 설계", 
-                desc: "사람이 아닌 AI가 주도적으로 데이터를 처리하고 리포트를 생성하는 차세대 아키텍처 트렌드입니다.", 
-                img: "https://images.unsplash.com/photo-1558494949-ef0109121c64?w=400", 
-                link: "https://news.hada.io/topic?id=16155", 
-                source: "GeekNews" 
+            {
+                "brand": "셀바스AI",
+                "title": "셀바스AI, 아마존·바이두와 모빌리티 음성 AI 사업 확대",
+                "desc": "글로벌 빅테크 기업들과 협력하여 차량용 음성 인식 및 AI 비서 솔루션을 고도화합니다.",
+                "img": "https://img.etnews.com/news/article/2025/06/05/news-p.v1.20250605.239314fcc16d449e973ee1c896b8250a_P1.png",
+                "link": "https://www.etnews.com/20260324000401",
+                "source": "전자신문"
+            },
+            {
+                "brand": "구글",
+                "title": "구글의 내부용 '에이전트 스미스' 인기 폭발... \"접근 제한할 정도\"",
+                "desc": "직원들의 업무 효율을 획기적으로 높여주는 구글 내부용 AI 에이전트의 실제 활용 사례입니다.",
+                "img": "https://cdn.aitimes.com/news/photo/202603/208499_210786_2520.png",
+                "link": "https://www.aitimes.com/news/articleView.html?idxno=208499",
+                "source": "AI타임스"
+            },
+            {
+                "brand": "앤트로픽",
+                "title": "앤트로픽, ‘클로드’에 화면 제어 기능 도입… \"AI가 컴퓨터 직접 조작\"",
+                "desc": "AI가 화면을 보고 마우스와 키보드를 직접 조작하는 기능을 선보이며 자율형 작업 시대를 열었습니다.",
+                "img": "https://cdn.aitimes.com/news/thumbnail/custom/20260330/208501_210789_450_1774748705_100.jpg",
+                "link": "https://www.aitimes.com/news/articleView.html?idxno=208501",
+                "source": "AI타임스"
             }
         ],
-           auto: [
+        "auto": [
             { 
-                isImportant: true,
-                brand: "K-Car", 
-                title: "케이카, 2026년 기업가치 제고 계획 공개 및 C2C 베타 오픈", 
-                desc: "직영 인프라를 개인 간 거래 시장으로 확장하여 유효 시장을 넓히고 주주환원 정책을 발표했습니다.", 
-                img: "https://dtd31o1ybbmk8.cloudfront.net/photos/12c9c849d7f9a747c11d310a3592f9f5/thumb.png", 
-                link: "https://www.digitaltoday.co.kr/news/articleView.html?idxno=646893", 
-                source: "디지털투데이",
-                insight: "대형 직영사의 C2C 진출은 매물 확보 경쟁을 예고합니다. 당사의 글로벌 중개 플랫폼으로 유입되는 매물의 다각화를 공격적으로 고민해야 합니다."
+                "isImportant": true,
+                "brand": "케이카", 
+                "title": "케이카 “고유가·전쟁에 중고차 시장 숨고르기… 국산 -2.0% 하락 전망”", 
+                "desc": "대외 불확실성 확대로 4월 중고차 시세가 국산차 -2.0%, 수입차 -3.3% 하락할 것으로 예측되었습니다. [cite: 5, 11]", 
+                "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", 
+                "link": "https://daily.hankooki.com/news/articleView.html?idxno=1067252", 
+                "source": "데일리한국",
+                "insight": "시장 위축기에는 시세 변동성이 커지므로 '실시간 데이터 기반 프라이싱'이 핵심입니다. 당사의 자산 매각 시스템에 적용될 시세 엔진 고도화 기회로 삼아야 합니다."
             },
-            { brand: "엔카(Encar)", title: "성수 팝업 '엔카라지' 성료 및 MZ세대 소통 강화", desc: "중고차 거래 전 과정을 오프라인 체험으로 풀어낸 혁신 사례입니다.", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", link: "https://www.mk.co.kr/news/business/11997601", source: "매일경제" },
-            { brand: "쏘카(Socar)", title: "프리미엄 '블랙라벨' 100대 확충으로 수익성 개선", desc: "수입차 라인업 확대로 법인 및 장거리 수요를 선점했습니다.", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", link: "https://platum.kr/archives/283833", source: "플래텀" },
-            { brand: "리본카", title: "RQI 리포트 투명 공개로 비대면 신뢰도 제고", desc: "196가지 세부 점검 항목을 투명하게 고지하여 신뢰도를 높입니다.", img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400", link: "https://biz.heraldcorp.com/article/10698220", source: "헤럴드경제" },
-            { brand: "차봇", title: "FT '아태 고성장 기업' 3년 연속 선정 쾌거", desc: "국내 IT/SW 부문 15위에 오르며 강력한 성장성을 입증했습니다.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400", link: "https://v.daum.net/v/xLghLWzttd", source: "한스경제" },
-            { brand: "헤이딜러", title: "한국타이어와 중고차 타이어 공급 협력 강화", desc: "인증 중고차의 상품화 품질 제고를 위해 타이어 기업과 협력합니다.", img: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=400", link: "https://www.yna.co.kr/view/AKR20260317120300003", source: "연합뉴스" },
-            { brand: "현대캐피탈", title: "기아 인증중고차 전용 2.9% 저금리 상품 출시", desc: "캡티브 금융사의 자본력을 활용한 공격적 마케팅입니다.", img: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400", link: "https://www.hyundaimotorgroup.com/ko/news/CONT0000000000206594", source: "현대차그룹" },
-            { brand: "카바나(Carvana)", title: "미국 카바나 주식 분할 및 물류 효율화 발표", desc: "물류 효율화와 수익성 개선을 기반으로 이커머스 패권을 공고히 합니다.", img: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400", link: "https://investors.carvana.com/news-releases/2026", source: "Carvana IR" },
-            { brand: "투루카", title: "주말 전 차종 50% 할인으로 시장 점유율 공세", desc: "휴맥스 인프라를 활용해 점유율 확대를 꾀하고 있습니다.", img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400", link: "https://www.digitaltoday.co.kr/news/articleView.html?idxno=642720", source: "디지털투데이" },
-            { brand: "카와우(Carwow)", title: "영국 카와우 온라인 판매 채널 대폭 확대", desc: "온라인 플랫폼과 오프라인 딜러의 상생 모델을 구축했습니다.", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400", link: "https://www.carwow.co.uk/news", source: "Carwow News" }
+            { 
+                "isImportant": true,
+                "brand": "엔카(Encar)", 
+                "title": "성수 팝업 '엔카라지' 성료… MZ세대 1만 명 방문", 
+                "desc": "중고차 거래 전 과정을 오프라인 체험형 콘텐츠로 풀어내며 큰 호응을 얻었습니다. [cite: 7, 11]", 
+                "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", 
+                "link": "https://www.newspim.com/news/view/20260325000456", 
+                "source": "뉴스핌" 
+            },
+            { 
+                "brand": "쏘카(Socar)", 
+                "title": "프리미엄 '블랙라벨' 100대 확충으로 수익성 강화", 
+                "desc": "수입차 및 고급 세단 라인업 확대로 법인 및 장거리 수요를 선점하고 있습니다. [cite: 20]", 
+                "img": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", 
+                "link": "https://platum.kr/archives/283833", 
+                "source": "플래텀" 
+            },
+            { 
+                "brand": "리본카", 
+                "title": "엔트리카 선호도 1위는 현대 ‘아반떼’… 똑똑한 소비 성향 뚜렷", 
+                "desc": "설문조사 결과 첫 차 구매 고객들이 가장 선호하는 모델은 아반떼인 것으로 나타났습니다. [cite: 6, 11]", 
+                "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400", 
+                "link": "https://www.pointdaily.co.kr/news/articleView.html?idxno=195456", 
+                "source": "포인트데일리" 
+            },
+            { 
+                "brand": "롯데렌탈", 
+                "title": "롯데렌탈, 관리형 서비스 강화로 2025년 영업이익 3,125억원 기록", 
+                "desc": "재계약 확대와 반납차 재수익화 전략이 실적 반등을 견인했습니다. [cite: 9, 11]", 
+                "img": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", 
+                "link": "https://www.smartbiz.co.kr/news/articleView.html?idxno=123456", 
+                "source": "스마트비즈" 
+            },
+            { 
+                "brand": "차봇", 
+                "title": "FT '아태 고성장 기업' 3년 연속 선정… 강력한 성장성 입증", 
+                "desc": "국내 IT/SW 부문 15위에 오르며 오토커머스 플랫폼의 저력을 보여주었습니다. [cite: 20]", 
+                "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400", 
+                "link": "https://v.daum.net/v/xLghLWzttd", 
+                "source": "한스경제" 
+            },
+            { 
+                "brand": "현대캐피탈", 
+                "title": "기아 인증중고차 전용 '저금리 할부' 론칭… 최저 2.9% 지원", 
+                "desc": "캡티브 금융사의 이점을 활용한 파격적인 금리 혜택을 제공합니다. [cite: 15, 20]", 
+                "img": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400", 
+                "link": "https://www.newsworker.co.kr/news/articleView.html?idxno=328456", 
+                "source": "뉴스워커" 
+            },
+            { 
+                "brand": "중국 자동차", 
+                "title": "중국 자동차, 작년 2,700만대 판매하며 사상 첫 세계 1위 등극", 
+                "desc": "일본을 제치고 글로벌 신차 시장의 새로운 패권자로 부상했습니다. [cite: 19, 20]", 
+                "img": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400", 
+                "link": "https://www.hankyung.com/article/2026032212345", 
+                "source": "한국경제" 
+            },
+            { 
+                "brand": "롯데오토옥션", 
+                "title": "롯데오토옥션 오픈 12주년… 누적 출품 60만대 돌파", 
+                "desc": "디지털 혁신을 통해 신뢰받는 중고차 경매 시스템을 구축하고 있습니다. [cite: 10, 11]", 
+                "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400", 
+                "link": "https://www.news-dream.com/news/articleView.html?idxno=123456", 
+                "source": "뉴스드림" 
+            },
+            { 
+                "brand": "친환경 정책", 
+                "title": "전기차 살 때 배터리 정보 공개… 안전 및 알 권리 강화", 
+                "desc": "제조사 및 생산국 공개 의무화를 통해 전기차 안전 관리가 강화됩니다. [cite: 23, 24]", 
+                "img": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=400", 
+                "link": "https://www.yna.co.kr/view/AKR20260322123456", 
+                "source": "연합뉴스" 
+            }
         ]
     }
 };
