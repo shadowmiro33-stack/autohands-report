@@ -39,18 +39,18 @@
         </div>
     </div>
 
-    <div id="article-modal" class="fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4">
-        <div class="bg-white w-full lg:max-w-7xl h-[95vh] rounded-2xl overflow-hidden flex flex-col relative shadow-2xl">
+<div id="article-modal" class="fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4" onclick="closeArticle(event)">
+        <div class="bg-white w-full lg:max-w-7xl h-[95vh] rounded-2xl overflow-hidden flex flex-col relative shadow-2xl" onclick="event.stopPropagation()">
             <div class="p-3 border-b flex justify-between items-center bg-gray-50">
                 <span class="text-sm font-bold text-gray-600 ml-2">OASIS 원문 리포트 뷰어</span>
-                <button onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-800 rounded-full hover:bg-black hover:text-white transition"><i class="fas fa-times"></i></button>
+                <button type="button" onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-800 rounded-full hover:bg-black hover:text-white transition"><i class="fas fa-times"></i></button>
             </div>
             <iframe id="article-frame" src="" class="w-full h-full border-none bg-white"></iframe>
             <div id="fallback-ui" class="w-full h-full flex flex-col items-center justify-center bg-gray-50 hidden">
                 <i class="fas fa-shield-alt text-6xl text-gray-300 mb-6"></i>
                 <h3 class="text-2xl font-black text-gray-800 mb-2">보안 정책이 적용된 언론사입니다</h3>
                 <p class="text-gray-500 mb-8 text-center">해당 기사는 외부 뷰어를 차단하고 있습니다.<br>아래 버튼을 눌러 새 창에서 안전하게 읽어주세요.</p>
-                <button id="fallback-btn" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                <button type="button" id="fallback-btn" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
                     새 창에서 기사 열기 <i class="fas fa-external-link-alt ml-2"></i>
                 </button>
             </div>
@@ -86,9 +86,15 @@
             }
         }
 
-        function closeArticle() {
+function closeArticle(event) {
+            // 배경 클릭 이벤트로 넘어왔을 때, 의도치 않은 닫힘 방지
+            if (event && event.target.id !== 'article-modal' && event.type !== 'click') return;
+
             document.getElementById('article-modal').classList.remove('active');
-            document.getElementById('article-frame').src = "";
+            
+            // 💡 핵심 버그 수정: "" 대신 "about:blank"를 주어야 브라우저가 새로고침(동반 종료) 되지 않습니다!
+            document.getElementById('article-frame').src = "about:blank"; 
+            
             document.body.style.overflow = 'auto';
         }
 
