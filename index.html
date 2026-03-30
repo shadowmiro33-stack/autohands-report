@@ -2,16 +2,13 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUTOHANDS Weekly Magazine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9fafb; word-break: keep-all; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9fafb; }
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .hover-scale { transition: transform 0.3s ease; }
-        .hover-scale:hover { transform: translateY(-5px); }
     </style>
 </head>
 <body>
@@ -19,63 +16,22 @@
         <header class="flex justify-between items-end border-b-4 border-black pb-4 mb-12">
             <div>
                 <h2 class="text-blue-600 font-bold uppercase text-sm">Autohands R&D Center</h2>
-                <h1 class="text-4xl font-black italic uppercase tracking-tighter">Weekly Magazine</h1>
+                <h1 class="text-4xl font-black italic uppercase">Weekly Magazine</h1>
             </div>
             <div class="text-right flex flex-col items-end gap-2">
-                <input type="date" id="date-picker" class="border-2 border-black rounded-lg px-2 py-1 font-bold text-sm shadow-sm" onchange="loadReport(this.value)">
-                <p id="display-issue" class="font-bold text-lg text-blue-600 tracking-tight"></p>
+                <input type="date" id="date-picker" class="border-2 border-black rounded-lg px-2 py-1 font-bold text-sm" onchange="loadReport(this.value)">
+                <p id="display-issue" class="font-bold text-lg text-blue-600"></p>
             </div>
         </header>
 
-        <div id="magazine-content"></div>
+        <div id="magazine-content">
+            <div class="py-20 text-center text-gray-400">데이터를 불러오는 중입니다...</div>
+        </div>
     </div>
 
+    <script src="./data.js"></script>
+    
     <script>
-        /** [DATA AREA] 차장님, 아래 기사 내용만 매일 교체해주시면 됩니다! **/
-        const archiveData = {
-            "2026-03-30": {
-                issue: "2026 March-NO.33 (Special Edition)",
-                video: {
-                    title: "테슬라 FSD 뚫렸다? 한국서도 구매 폭증...테슬라 해킹 대소동?!",
-                    desc: "국내 테슬라 유저들 사이에서 벌어진 FSD 구매 소동과 해킹 이슈의 전말 긴급 분석 영상입니다.",
-                    url: "https://youtu.be/JMbguxdvwqY?si=BygV0-TRJtLVAw63",
-                    source: "김한용의 Mocha"
-                },
-                main: {
-                    title: "현대차, 주총서 '렌터카 사업' 공식 진출... 모빌리티 판도 흔드는 수직계열화",
-                    desc: "3월 26일 현대자동차 정관에 '자동차 대여 사업' 추가. 단순 제조를 넘어 차량 생애주기 전체를 직접 관리하는 통합 플랫폼 전략이 본격화되었습니다.",
-                    img: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800",
-                    link: "https://www.econovill.com/news/articleView.html?idxno=734918",
-                    source: "이코노믹리뷰"
-                },
-                ai: [
-                    { title: "하네스 엔지니어링: AI 코딩 100% 시대", desc: "코딩 문법보다 AI에게 명확한 맥락을 제시하고 검증하는 역량이 필수화되었습니다.", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400", link: "https://www.chosun.com/economy/tech_it/2026/03/16/N6DM6IKF7NFHHCVB7OMSSDUWBU/", source: "조선일보" },
-                    { title: "삼성전자 HBM 공급망 전략 변화", desc: "HBM4 공급 로드맵과 함께 글로벌 빅테크들의 수급 경쟁이 심화되고 있습니다.", img: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=400", link: "http://www.e-today.kr/news/articleView.html?idxno=909651", source: "경제투데이" },
-                    { title: "에이전틱 AI 시대의 커머스 미래", desc: "AI 에이전트가 직접 판단하고 거래를 실행하는 '에이전틱 커머스'가 부상 중입니다.", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400", link: "https://www.deloitte.com/kr/ko/Industries/financial-services/perspectives/future-of-commerce-agentic-ai.html", source: "Deloitte Korea" },
-                    { title: "구글 '터보퀀트' 신기술 공개", desc: "AI 메모리 사용량을 획기적으로 줄여주는 신기술로 반도체 생태계가 요동치고 있습니다.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400", link: "https://www.yna.co.kr/view/AKR20260327109100003", source: "연합뉴스" },
-                    { title: "무언(無言) AI 인터페이스", desc: "음성 인식 한계를 극복하기 위해 입 모양 등 비언어적 수단을 활용하는 방식입니다.", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400", link: "https://www.chosun.com/economy/tech_it/2026/03/26/OSLKWJUQMZDAVIQJPFHE36SNFU/", source: "조선일보" },
-                    { title: "AI 법(AI Act) 본격화", desc: "기술 발전과 사회적 책임 사이의 균형을 찾기 위한 글로벌 규제가 안착 중입니다.", img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400", link: "https://www.benews.co.kr/news/476424", source: "브랜드경제신문" },
-                    { title: "데이터 엔지니어링: 에이전트 중심 설계", desc: "에이전트가 기본 사용자로 작동하는 환경을 전제로 한 인프라 설계가 핵심 과제입니다.", img: "https://images.unsplash.com/photo-1558494949-ef0109121c64?w=400", link: "https://news.hada.io/topic?id=26155", source: "GeekNews" },
-                    { title: "피지컬 AI: 물리 세계 학습 자율주행", desc: "물리적 환경을 정밀하게 시뮬레이션하고 제어하는 기술이 상용화 단계입니다.", img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400", link: "https://www.chosun.com/economy/tech_it/2026/03/26/VYYVTBNDRFHD7E44N6XKAJVSLU/", source: "조선일보" },
-                    { title: "공공부문 AI 혁신 가속: 행안부 사례", desc: "공공 서비스와 민간 솔루션 간의 결합이 활발해지고 있습니다.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400", link: "https://mois.go.kr/frt/bbs/type010/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000008&nttId=124639", source: "행정안전부" },
-                    { title: "AI 고용 플랫폼 성과", desc: "AI 알고리즘을 통한 직무 역량 분석으로 일자리 미스매치 문제를 해결합니다.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400", link: "https://www.chosun.com/national/education/2026/03/27/FTO23AZ3R5GGRDJINLLZUMZBH4/", source: "조선일보" }
-                ],
-                auto: [
-                    { cat: "Encar", title: "성수 팝업 '엔카라지' 성료", desc: "중고차 거래 전 과정을 오프라인 체험으로 풀어낸 혁신 사례입니다.", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", link: "https://www.mk.co.kr/news/business/11997601", source: "매일경제" },
-                    { cat: "K-Car", title: "4월 개인 직거래(C2C) 베타 오픈", desc: "직영 인프라를 개인 간 거래 시장으로 확장하여 유효 시장을 넓힙니다.", img: "https://dtd31o1ybbmk8.cloudfront.net/photos/12c9c849d7f9a747c11d310a3592f9f5/thumb.png", link: "https://www.digitaltoday.co.kr/news/articleView.html?idxno=646893", source: "디지털투데이" },
-                    { cat: "Socar", title: "프리미엄 '블랙라벨' 100대 확충", desc: "수입차 라인업 확대로 법인 및 장거리 수요를 선점했습니다.", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", link: "https://platum.kr/archives/283833", source: "플래텀" },
-                    { cat: "리본카", title: "RQI 리포트 투명 공개 전략", desc: "196가지 세부 점검 항목을 투명하게 고지하여 신뢰도를 높입니다.", img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400", link: "https://biz.heraldcorp.com/article/10698220", source: "헤럴드경제" },
-                    { cat: "차봇", title: "FT '아태 고성장 기업' 3년 연속 선정", desc: "국내 IT/SW 부문 15위에 오르며 강력한 성장성을 입증했습니다.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400", link: "https://v.daum.net/v/xLghLWzttd", source: "한스경제" },
-                    { cat: "헤이딜러", title: "한국타이어와 중고차 타이어 공급 협력", desc: "인증 중고차의 상품화 품질 제고를 위해 타이어 기업과 협력합니다.", img: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=400", link: "https://www.yna.co.kr/view/AKR20260317120300003", source: "연합뉴스" },
-                    { cat: "현대캐피탈", title: "기아 인증중고차 전용 2.9% 저금리", desc: "캡티브 금융사의 자본력을 활용한 공격적 마케팅입니다.", img: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400", link: "https://www.hyundaimotorgroup.com/ko/news/CONT0000000000206594", source: "현대차그룹" },
-                    { cat: "Carvana", title: "미국 카바나 주식 분할 결정", desc: "물류 효율화와 수익성 개선을 기반으로 이커머스 패권을 공고히 합니다.", img: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400", link: "https://investors.carvana.com/news-releases/2026", source: "Carvana IR" },
-                    { cat: "투루카", title: "주말 전 차종 50% 할인 공세", desc: "휴맥스 인프라를 활용해 점유율 확대를 꾀하고 있습니다.", img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400", link: "https://www.digitaltoday.co.kr/news/articleView.html?idxno=642720", source: "디지털투데이" },
-                    { cat: "Carwow", title: "영국 카와우 온라인 판매 채널 확대", desc: "온라인 플랫폼과 오프라인 딜러의 상생 모델을 구축했습니다.", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400", link: "https://www.carwow.co.uk/news", source: "Carwow News" }
-                ]
-            }
-        };
-
-        /** [LOGIC AREA] **/
         function getYoutubeEmbed(url) {
             let id = '';
             if (url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
@@ -84,12 +40,21 @@
         }
 
         function loadReport(date) {
+            // 전역 변수 archiveData가 있는지 체크
+            if (typeof archiveData === 'undefined') {
+                document.getElementById('magazine-content').innerHTML = `
+                    <div class="py-20 text-center border-2 border-dashed border-red-300 rounded-2xl bg-red-50">
+                        <p class="text-red-500 font-bold text-lg mb-2">data.js 파일을 찾을 수 없습니다.</p>
+                        <p class="text-gray-500 text-sm">1. index.html과 data.js가 같은 폴더에 있는지 확인하세요.<br>2. 파일명이 정확히 data.js인지 확인하세요.</p>
+                    </div>`;
+                return;
+            }
+
             const data = archiveData[date];
             const content = document.getElementById('magazine-content');
             
             if(!data) {
-                content.innerHTML = `<div class="py-20 text-center text-gray-400 font-bold text-xl">해당 날짜(${date})의 데이터가 없습니다.</div>`;
-                document.getElementById('display-issue').textContent = "NO DATA";
+                content.innerHTML = `<div class="py-20 text-center text-gray-400 font-bold text-xl">${date} 리포트 데이터가 없습니다.</div>`;
                 return;
             }
 
@@ -97,46 +62,41 @@
             
             content.innerHTML = `
                 <section class="mb-16 bg-black rounded-3xl overflow-hidden p-8 text-white grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
-                    <div class="lg:col-span-2 aspect-video rounded-2xl overflow-hidden bg-gray-900 shadow-2xl">
+                    <div class="lg:col-span-2 aspect-video rounded-2xl overflow-hidden shadow-2xl">
                         <iframe class="w-full h-full" src="${getYoutubeEmbed(data.video.url)}" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div>
-                        <span class="text-red-500 font-black text-sm uppercase tracking-widest"><i class="fab fa-youtube mr-2"></i>${data.video.source}</span>
-                        <h2 class="text-3xl font-black mt-4 mb-4 leading-tight">${data.video.title}</h2>
+                        <span class="text-red-500 font-bold text-sm uppercase"><i class="fab fa-youtube mr-2"></i>${data.video.source}</span>
+                        <h2 class="text-2xl font-black mt-4 mb-2 leading-tight">${data.video.title}</h2>
                         <p class="text-gray-400 text-sm leading-relaxed">${data.video.desc}</p>
                     </div>
                 </section>
-
-                <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-center">
-                    <div class="rounded-3xl overflow-hidden shadow-2xl cursor-pointer hover-scale" onclick="window.open('${data.main.link}')">
-                        <img src="${data.main.img}" class="w-full h-[450px] object-cover bg-gray-200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16" id="lists-area">
+                    <div id="ai-list-wrap">
+                        <h3 class="text-2xl font-black mb-8 border-b-2 pb-2">AI TECHNOLOGY</h3>
+                        <div id="ai-list" class="space-y-8"></div>
                     </div>
-                    <div>
-                        <span class="bg-black text-white px-3 py-1 text-xs font-bold rounded mb-4 inline-block tracking-widest uppercase">Weekly Headline</span>
-                        <h2 class="text-5xl font-black leading-tight mb-6 tracking-tighter">${data.main.title}</h2>
-                        <p class="text-xl text-gray-600 mb-8 leading-relaxed">${data.main.desc}</p>
-                        <button onclick="window.open('${data.main.link}')" class="font-black text-lg border-b-4 border-black pb-1 hover:text-blue-600 hover:border-blue-600 transition">READ FULL STORY →</button>
+                    <div id="auto-list-wrap">
+                        <h3 class="text-2xl font-black mb-8 border-b-2 pb-2">AUTO PLATFORM</h3>
+                        <div id="auto-list" class="space-y-8"></div>
                     </div>
-                </section>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                    <div><h3 class="text-2xl font-black mb-8 border-b-4 border-black pb-2 uppercase tracking-tighter">AI Technology</h3><div id="ai-list" class="space-y-10"></div></div>
-                    <div><h3 class="text-2xl font-black mb-8 border-b-4 border-black pb-2 uppercase tracking-tighter">Auto Platform</h3><div id="auto-list" class="space-y-10"></div></div>
                 </div>
             `;
+            // 이하 리스트 렌더링 함수 실행 (생략된 부분은 위와 동일)
+            renderItems(data.ai, 'ai-list');
+            renderItems(data.auto, 'auto-list');
+        }
 
-            const renderItems = (items, id) => {
-                document.getElementById(id).innerHTML = items.map(item => `
-                    <div class="flex gap-5 cursor-pointer group hover-scale" onclick="window.open('${item.link}')">
-                        <img src="${item.img || 'https://via.placeholder.com/150'}" class="w-28 h-28 rounded-2xl object-cover shadow-lg flex-shrink-0 bg-gray-200">
-                        <div class="flex flex-col justify-center">
-                            <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">${item.cat || 'TECH'} | ${item.source}</span>
-                            <h4 class="font-bold text-xl group-hover:text-blue-600 leading-snug transition">${item.title}</h4>
-                            <p class="text-sm text-gray-500 line-clamp-2 mt-2 leading-relaxed">${item.desc}</p>
-                        </div>
-                    </div>`).join('');
-            };
-            renderItems(data.ai, 'ai-list'); renderItems(data.auto, 'auto-list');
+        function renderItems(items, id) {
+            document.getElementById(id).innerHTML = items.map(item => `
+                <div class="flex gap-4 cursor-pointer group" onclick="window.open('${item.link}')">
+                    <img src="${item.img || 'https://via.placeholder.com/100'}" class="w-24 h-24 rounded-2xl object-cover bg-gray-200">
+                    <div>
+                        <span class="text-[10px] font-bold text-blue-600 uppercase">${item.source}</span>
+                        <h4 class="font-bold text-lg group-hover:text-blue-600 leading-snug transition">${item.title}</h4>
+                        <p class="text-sm text-gray-500 line-clamp-2 mt-1">${item.desc}</p>
+                    </div>
+                </div>`).join('');
         }
 
         window.onload = () => {
