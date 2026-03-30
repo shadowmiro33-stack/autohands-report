@@ -30,24 +30,30 @@ var archiveData = {
                 source: "AI타임스",
                 insight: "데이터센터 유지 비용을 획기적으로 낮출 수 있는 혁신입니다. 당사의 대규모 모빌리티 데이터 분석 인프라(R&D) 구축 시, 기존 대비 클라우드 아키텍처 및 비용 산정 로직을 전면 재검토하여 예산을 절감해야 할 시점입니다."
             },
+            {
+                isImportant: true, 
+                brand: "OpenAI", 
+                title: "오픈AI, 스스로 추론하는 'GPT-5' 올 여름 출시... 인간 지능 육박하나", 
+                desc: "단순 다음 단어 예측을 넘어 논리적 추론 과정을 거치는 차세대 LLM이 공개를 앞두고 있습니다.", 
+                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400", 
+                link: "https://www.zdnet.co.kr/view/?no=20260328091000", 
+                source: "지디넷코리아",
+                insight: "추론 능력이 강화된 모델은 당사가 추진 중인 '지능형 고객 대응 시스템'의 복잡한 예외 상황 처리 능력을 획기적으로 높일 수 있습니다. 출시 즉시 API 연동 테스트가 필요합니다."
+            },
             { 
                 isImportant: true, 
-                brand: "사카나 AI", 
-                title: "사카나 AI, 시스템이 100% 자체 작성한 논문이 사상 첫 '네이처'에 게재", 
-                desc: "AI가 연구 아이디어 생성부터 논문 작성, 검증까지 전 과정을 독립적으로 수행해 세계 최고 권위의 학술지 심사를 통과했습니다.", 
-                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400", 
-                link: "https://www.aitimes.com/news/articleView.html?idxno=208446", 
-                source: "AI타임스",
-                insight: "AI의 자율적 문제 해결 능력이 새로운 차원에 도달했습니다. 선행 연구 및 글로벌 트렌드 분석 업무에 이와 같은 자율형 리서치 AI 도입을 조기 테스트해 볼 필요가 있습니다."
+                brand: "구글", 
+                title: "구글, AI 메모리 효율 10배 높인 '터보퀀트' 신기술 공개", 
+                desc: "AI 구동 시 발생하는 막대한 메모리 부하를 줄여 저사양 기기에서도 고성능 AI를 돌릴 수 있는 기술입니다.", 
+                img: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=400", 
+                link: "https://www.yna.co.kr/view/AKR20260327109100003", 
+                source: "연합뉴스",
+                insight: "온디바이스 AI 트렌드에 대응하기 위한 핵심 기술입니다. 당사 모바일 앱 내에 가벼운 AI 기능을 탑재할 때 클라우드 비용을 절감할 수 있는 전략적 대안이 될 수 있습니다."
             },
-            { brand: "앤트로픽", title: "앤트로픽, 사상 최강 모델 '클로드 미소스(Mythos)' 출시 임박", desc: "코드 작성과 복잡한 추론에서 압도적 성능을 보이는 앤트로픽의 차세대 언어모델 '미소스'가 시장의 기대를 모으고 있습니다.", img: "https://images.unsplash.com/photo-1558494949-ef0109121c64?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=208499", source: "AI타임스" },
-            { brand: "하비(Harvey)", title: "법률 AI 대표 하비, 16조 가치로 투자 유치...\"보조 넘어 에이전트로 진화\"", desc: "법률 등 전문 영역에 특화된 AI 스타트업이 거액 투자를 받으며, 단순 문답을 넘어 직접 업무를 수행하는 에이전트 전환을 선언했습니다.", img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=208498", source: "AI타임스" },
-            { brand: "오픈AI", title: "알트먼 \"AI로 '거대한 돌파구'에 집중해야...AGI는 인류 도약의 전 단계일 뿐\"", desc: "샘 알트먼 오픈AI CEO가 단순한 생산성 향상을 넘어 에너지, 의료 등 근본적인 도약을 위한 AI 기술 개발을 역설했습니다.", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=207925", source: "AI타임스" },
-            { brand: "소프트뱅크", title: "소프트뱅크, 오픈AI 투자 확대 위해 60조 단기 대출...\"1년 내 IPO 승부수\"", desc: "손정의 회장이 오픈AI 지분 확대를 위해 대규모 자금을 조달하며 글로벌 AI 생태계 패권 경쟁에 사활을 걸고 있습니다.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=208497", source: "AI타임스" },
-            { brand: "애플", title: "애플, '시리' 대개편 위해 AI 마케팅 부사장으로 구글 베테랑 영입", desc: "애플이 온디바이스 AI 시장의 주도권을 쥐기 위해 구글 출신의 핵심 임원을 전격 영입하며 생태계 확장을 꾀하고 있습니다.", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=208496", source: "AI타임스" },
-            { brand: "메타", title: "메타, 기존 안경 착용자를 위한 새로운 폼팩터 AI 안경 출시 예정", desc: "레이밴과의 협업으로 웨어러블 AI 시장을 주도 중인 메타가 시력 교정용 안경 사용자를 겨냥한 신규 모델을 선보입니다.", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=208495", source: "AI타임스" },
-            { brand: "인터콤", title: "고객지원 특화 AI '에이펙스' 공개...\"맞춤형으로 GPT·클로드 제쳐\"", desc: "고객 응대 CS 분야에 최적화된 전문 AI 모델이 범용 대형언어모델(LLM)보다 높은 성과를 보이며 버티컬 AI의 강세를 보여줍니다.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=208494", source: "AI타임스" },
-            { brand: "그래놀라", title: "B2B AI 회의록 '그래놀라', 기업가치 2조원 돌파하며 유니콘 등극", desc: "기업 특화 AI 회의록 서비스 그래놀라가 유니콘 기업 반열에 오르며, 엔터프라이즈 AI 솔루션의 강력한 수익성을 입증했습니다.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=208493", source: "AI타임스" }
+            { brand: "삼성전자", title: "삼성전자, 'AI 비서' 탑재한 일체형 가전 전격 공개", desc: "사용자의 습관을 학습하여 스스로 동작하는 진정한 의미의 스마트 가전 시대가 열렸습니다.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400", link: "https://www.chosun.com/economy/tech_it/2026/03/26/OSLKWJUQMZDAVIQJPFHE36SNFU/", source: "조선일보" },
+            { brand: "미디어로그", title: "AI 에이전트, 고객 상담 넘어 직접 계약까지 척척", desc: "단순 문답 수준을 벗어나 본인 인증과 서류 검토까지 수행하는 AI 에이전트 서비스가 상용화되었습니다.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=208500", source: "AI타임스" },
+            { brand: "테크크런치", title: "생성형 AI 검색 '퍼플렉시티', 유료 구독자 100만 명 돌파", desc: "전통적인 키워드 검색 방식에서 대화형 답변 방식으로 검색 시장의 패러다임이 빠르게 이동 중입니다.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400", link: "https://techcrunch.com/2026/03/perplexity-milestone", source: "TechCrunch" },
+            { brand: "행안부", title: "정부, '공공부문 AI 도입 가이드라인' 확정 발표", desc: "공공 서비스 혁신을 위해 민간 기업의 AI 솔루션을 적극 도입하기 위한 표준 절차가 마련되었습니다.", img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400", link: "https://www.mois.go.kr/frt/bbs/type010/commonSelectBoardArticle.do?nttId=124639", source: "행정안전부" }
         ],
         auto: [
             { 
