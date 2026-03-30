@@ -17,7 +17,6 @@ var archiveData = {
             img: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800",
             link: "https://www.econovill.com/news/articleView.html?idxno=734918",
             source: "이코노믹리뷰",
-            insight: "현대차의 렌터카 직진출은 제조를 넘어선 플랫폼 통합 전략입니다. 당사의 기존 렌터카 비즈니스 및 '카멜레온(Carmeleon)' 수출 플랫폼과 연계하여, 반납 차량의 해외 수출 단가를 극대화하는 선순환 데이터 분석 시스템 고도화가 시급합니다. 다가올 IPO에서 강력한 에쿼티 스토리로 작용할 수 있습니다."
         },
         ai: [
             { 
@@ -58,7 +57,7 @@ var archiveData = {
                 img: "https://dtd31o1ybbmk8.cloudfront.net/photos/12c9c849d7f9a747c11d310a3592f9f5/thumb.png", 
                 link: "https://www.digitaltoday.co.kr/news/articleView.html?idxno=646893", 
                 source: "디지털투데이",
-                insight: "대형 직영사의 C2C 진출은 시장의 투명성을 높이는 동시에 치열한 매물 확보 경쟁을 예고합니다. '카멜레온' 플랫폼으로 유입되는 개인 매물의 C2B2B 연계 모델 등 차별화된 매입 채널 다각화를 고민해야 할 시점입니다."
+              
             },
             { brand: "엔카(Encar)", title: "성수 팝업 '엔카라지' 성료", desc: "중고차 거래 전 과정을 오프라인 체험으로 풀어낸 혁신 사례입니다.", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", link: "https://www.mk.co.kr/news/business/11997601", source: "매일경제" },
             { brand: "쏘카(Socar)", title: "프리미엄 '블랙라벨' 100대 확충", desc: "수입차 라인업 확대로 법인 및 장거리 수요를 선점했습니다.", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", link: "https://platum.kr/archives/283833", source: "플래텀" },
