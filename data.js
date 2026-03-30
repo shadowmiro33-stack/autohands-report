@@ -1,16 +1,15 @@
 const archiveData = {
     "2026-03-30": {
         issue: "2026 March-NO.33 (Special Edition)",
-        date: "2026.03.30",
         video: {
             title: "2027 현대 제네시스 GV90 최초 공개! 압도적 실물 수준",
-            desc: "조회수 120만 돌파! 이번 주 가장 핫한 자동차 영상입니다.",
+            desc: "조회수 120만 돌파! 이번 주 국내 자동차 커뮤니티에서 가장 화제가 된 영상입니다.",
             youtubeId: "rK4xW56fGgE",
             source: "우파푸른하늘WoopaTV"
         },
         main: {
             title: "현대차, 주총서 '렌터카 사업' 공식 진출... 모빌리티 판도 흔드는 수직계열화",
-            desc: "3월 26일 현대자동차가 정관에 '자동차 대여 사업'을 추가하며 10조 규모 시장에 진출했습니다.",
+            desc: "3월 26일 현대자동차가 정관에 '자동차 대여 사업'을 추가하며 10조 규모 시장에 진출했습니다. 제조-구독-인증중고차로 이어지는 통합 생태계 전략입니다.",
             img: "https://img1.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202603/26/edaily/20260326105820464jymx.jpg",
             link: "https://v.daum.net/v/XiaDoLIkE8",
             source: "이데일리"
