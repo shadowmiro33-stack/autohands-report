@@ -55,7 +55,7 @@ var archiveData = {
                 link: "https://www.aitimes.com/news/articleView.html?idxno=158221", 
                 source: "AI타임스" 
             },
-            { 
+{ 
                 brand: "GeekNews", 
                 title: "데이터 엔지니어링: AI 에이전트 중심의 인프라 설계", 
                 desc: "사람이 아닌 AI가 주도적으로 데이터를 처리하고 리포트를 생성하는 차세대 아키텍처 트렌드입니다.", 
@@ -63,7 +63,7 @@ var archiveData = {
                 link: "https://news.hada.io/topic?id=16155", 
                 source: "GeekNews" 
             }
-],
+        ],
            auto: [
             { 
                 isImportant: true,
