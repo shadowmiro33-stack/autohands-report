@@ -11,6 +11,8 @@
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .hover-scale { transition: transform 0.3s ease; }
         .hover-scale:hover { transform: translateY(-4px); }
+        
+        /* 모달 제어용 CSS */
         #article-modal { display: none; }
         #article-modal.active { display: flex; }
     </style>
@@ -35,15 +37,20 @@
         </header>
 
         <div id="magazine-content">
-            <div class="py-20 text-center text-gray-400">데이터 로드 중...</div>
+            <div class="py-20 text-center text-gray-400">
+                <i class="fas fa-circle-notch fa-spin text-3xl mb-4"></i>
+                <p>데이터 로드 중...</p>
+            </div>
         </div>
     </div>
 
-<div id="article-modal" class="fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4" onclick="closeArticle(event)">
-        <div class="bg-white w-full lg:max-w-7xl h-[95vh] rounded-2xl overflow-hidden flex flex-col relative shadow-2xl" onclick="event.stopPropagation()">
+    <div id="article-modal" class="fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4" onclick="clickOutsideModal(event)">
+        <div class="bg-white w-[95vw] max-w-[1600px] h-[95vh] rounded-2xl overflow-hidden flex flex-col relative shadow-2xl" onclick="event.stopPropagation()">
             <div class="p-3 border-b flex justify-between items-center bg-gray-50">
                 <span class="text-sm font-bold text-gray-600 ml-2">OASIS 원문 리포트 뷰어</span>
-                <button type="button" onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-800 rounded-full hover:bg-black hover:text-white transition"><i class="fas fa-times"></i></button>
+                <button type="button" onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-800 rounded-full hover:bg-black hover:text-white transition">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
             <iframe id="article-frame" src="" class="w-full h-full border-none bg-white"></iframe>
             <div id="fallback-ui" class="w-full h-full flex flex-col items-center justify-center bg-gray-50 hidden">
@@ -57,8 +64,6 @@
         </div>
     </div>
 
-    <script src="./data.js"></script>
-    
     <script>
         const blockedSites = ['naver.com', 'chosun.com', 'newsis.com', 'donga.com', 'yna.co.kr', 'edaily.co.kr'];
 
@@ -86,16 +91,18 @@
             }
         }
 
-function closeArticle(event) {
-            // 배경 클릭 이벤트로 넘어왔을 때, 의도치 않은 닫힘 방지
-            if (event && event.target.id !== 'article-modal' && event.type !== 'click') return;
-
+        // 💡 동반 종료(새로고침) 버그 해결: src를 "" 대신 "about:blank"로 비워줌
+        function closeArticle() {
             document.getElementById('article-modal').classList.remove('active');
-            
-            // 💡 핵심 버그 수정: "" 대신 "about:blank"를 주어야 브라우저가 새로고침(동반 종료) 되지 않습니다!
             document.getElementById('article-frame').src = "about:blank"; 
-            
             document.body.style.overflow = 'auto';
+        }
+
+        // 💡 까만 바탕화면 눌렀을 때 닫히는 기능
+        function clickOutsideModal(event) {
+            if (event.target.id === 'article-modal') {
+                closeArticle();
+            }
         }
 
         function getYoutubeEmbed(url) {
@@ -105,91 +112,102 @@ function closeArticle(event) {
             return `https://www.youtube.com/embed/${id}`;
         }
 
-        function loadReport(date) {
-            if (typeof archiveData === 'undefined') return;
-
-            const data = archiveData[date];
+        async function loadReport(date) {
             const content = document.getElementById('magazine-content');
-            if(!data) return;
+            content.innerHTML = `<div class="py-20 text-center text-gray-400"><i class="fas fa-circle-notch fa-spin text-3xl mb-4"></i><p>오아시스 리포트를 불러오는 중입니다...</p></div>`;
 
-            document.getElementById('display-issue').textContent = data.issue;
-            
-            const mainInsightHtml = data.main.insight ? `
-                <div class="mt-6 bg-blue-50/50 p-6 rounded-2xl border-l-4 border-blue-600">
-                    <p class="text-sm font-black text-blue-900 mb-2"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>R&D 기술 고찰점</p>
-                    <p class="text-sm text-gray-800 leading-relaxed font-medium">${data.main.insight}</p>
-                </div>` : '';
+            try {
+                const response = await fetch(`./data/${date}.json`);
+                if (!response.ok) throw new Error('Data not found');
+                
+                const data = await response.json();
+                document.getElementById('display-issue').textContent = data.issue;
 
-            content.innerHTML = `
-                <section class="mb-16 bg-black rounded-3xl overflow-hidden p-8 text-white grid grid-cols-1 lg:grid-cols-3 gap-10 items-center shadow-lg">
-                    <div class="lg:col-span-2 aspect-video rounded-2xl overflow-hidden bg-gray-900 shadow-2xl">
-                        <iframe class="w-full h-full" src="${getYoutubeEmbed(data.video.url)}" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div>
-                        <span class="text-red-500 font-bold text-sm uppercase tracking-widest"><i class="fab fa-youtube mr-2"></i>[${data.video.brand}] ${data.video.source}</span>
-                        <h2 class="text-3xl font-black mt-4 mb-4 leading-tight">${data.video.title}</h2>
-                        <p class="text-gray-400 text-sm leading-relaxed">${data.video.desc}</p>
-                    </div>
-                </section>
+                const mainInsightHtml = data.main.insight ? `
+                    <div class="mt-6 bg-blue-50/50 p-6 rounded-2xl border-l-4 border-blue-600">
+                        <p class="text-sm font-black text-blue-900 mb-2"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>R&D 기술 고찰점</p>
+                        <p class="text-sm text-gray-800 leading-relaxed font-medium">${data.main.insight}</p>
+                    </div>` : '';
 
-                <section class="mb-24">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="rounded-3xl overflow-hidden shadow-xl cursor-pointer hover-scale" onclick="smartOpen('${data.main.link}')">
-                            <img src="${data.main.img}" class="w-full h-[500px] object-cover bg-gray-200">
+                content.innerHTML = `
+                    <section class="mb-16 bg-black rounded-3xl overflow-hidden p-8 text-white grid grid-cols-1 lg:grid-cols-3 gap-10 items-center shadow-lg">
+                        <div class="lg:col-span-2 aspect-video rounded-2xl overflow-hidden bg-gray-900 shadow-2xl">
+                            <iframe class="w-full h-full" src="${getYoutubeEmbed(data.video.url)}" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div>
-                            <span class="bg-blue-900 text-white px-3 py-1 text-xs font-bold rounded mb-4 inline-block tracking-widest">OASIS HEADLINE ${data.main.isImportant ? '🔥' : ''}</span>
-                            <h2 class="text-4xl font-black leading-tight mb-6 tracking-tighter"><span class="text-blue-600">[${data.main.brand}]</span> ${data.main.title}</h2>
-                            <p class="text-lg text-gray-600 mb-6 leading-relaxed">${data.main.desc}</p>
-                            <button onclick="smartOpen('${data.main.link}')" class="font-bold text-lg border-b-2 border-black pb-1 hover:text-blue-600 transition">본문 읽기 →</button>
-                            ${mainInsightHtml}
+                            <span class="text-red-500 font-bold text-sm uppercase tracking-widest"><i class="fab fa-youtube mr-2"></i>[${data.video.brand}] ${data.video.source}</span>
+                            <h2 class="text-3xl font-black mt-4 mb-4 leading-tight">${data.video.title}</h2>
+                            <p class="text-gray-400 text-sm leading-relaxed">${data.video.desc}</p>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                    <div>
-                        <h3 class="text-3xl font-black mb-8 border-b-4 border-black pb-3 uppercase tracking-tighter">AI Technology</h3>
-                        <div id="ai-list" class="space-y-6"></div>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-black mb-8 border-b-4 border-black pb-3 uppercase tracking-tighter">Auto Platform</h3>
-                        <div id="auto-list" class="space-y-6"></div>
-                    </div>
-                </div>
-            `;
-
-            // 💡 리스트 카드 여백(Padding)을 p-3 -> p-6으로 대폭 늘려 숨통을 틔움
-            const renderItems = (items, id) => {
-                document.getElementById(id).innerHTML = items.map(item => `
-                    <div class="group bg-white rounded-3xl shadow-sm border border-gray-100 p-6 transition hover:shadow-lg">
-                        <div class="flex gap-6 cursor-pointer items-center" onclick="smartOpen('${item.link}')">
-                            <img src="${item.img || 'https://via.placeholder.com/150'}" class="w-28 h-28 rounded-2xl object-cover bg-gray-200 flex-shrink-0 shadow-sm">
-                            <div class="flex flex-col justify-center flex-grow">
-                                <span class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">
-                                    ${item.isImportant ? '<span class="text-red-500 mr-1 font-black">🔥 중요</span> | ' : ''}
-                                    ${item.source}
-                                </span>
-                                <h4 class="font-bold text-lg group-hover:text-blue-600 leading-snug transition tracking-tight">
-                                    <span class="text-blue-600 mr-1">[${item.brand}]</span>${item.title}
-                                </h4>
-                                <p class="text-sm text-gray-500 line-clamp-2 mt-2">${item.desc}</p>
+                    <section class="mb-24">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            <div class="rounded-3xl overflow-hidden shadow-xl cursor-pointer hover-scale" onclick="smartOpen('${data.main.link}')">
+                                <img src="${data.main.img}" class="w-full h-[500px] object-cover bg-gray-200">
+                            </div>
+                            <div>
+                                <span class="bg-blue-900 text-white px-3 py-1 text-xs font-bold rounded mb-4 inline-block tracking-widest">OASIS HEADLINE ${data.main.isImportant ? '🔥' : ''}</span>
+                                <h2 class="text-4xl font-black leading-tight mb-6 tracking-tighter"><span class="text-blue-600">[${data.main.brand}]</span> ${data.main.title}</h2>
+                                <p class="text-lg text-gray-600 mb-6 leading-relaxed">${data.main.desc}</p>
+                                <button type="button" onclick="smartOpen('${data.main.link}')" class="font-bold text-lg border-b-2 border-black pb-1 hover:text-blue-600 transition">본문 읽기 →</button>
+                                ${mainInsightHtml}
                             </div>
                         </div>
-                        ${item.insight ? `
-                        <div class="mt-5 bg-gray-50 p-4 rounded-2xl border-l-4 border-blue-400">
-                            <p class="text-xs font-bold text-blue-800 mb-1">💡 R&D 기술 고찰점</p>
-                            <p class="text-xs text-gray-700 leading-relaxed font-medium">${item.insight}</p>
-                        </div>` : ''}
-                    </div>`).join('');
-            };
-            
-            renderItems(data.ai, 'ai-list');
-            renderItems(data.auto, 'auto-list');
+                    </section>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                        <div>
+                            <h3 class="text-3xl font-black mb-8 border-b-4 border-black pb-3 uppercase tracking-tighter">AI Technology</h3>
+                            <div id="ai-list" class="space-y-6"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-black mb-8 border-b-4 border-black pb-3 uppercase tracking-tighter">Auto Platform</h3>
+                            <div id="auto-list" class="space-y-6"></div>
+                        </div>
+                    </div>
+                `;
+
+                const renderItems = (items, id) => {
+                    document.getElementById(id).innerHTML = items.map(item => `
+                        <div class="group bg-white rounded-3xl shadow-sm border border-gray-100 p-6 transition hover:shadow-lg">
+                            <div class="flex gap-6 cursor-pointer items-center" onclick="smartOpen('${item.link}')">
+                                <img src="${item.img || 'https://via.placeholder.com/150'}" class="w-28 h-28 rounded-2xl object-cover bg-gray-200 flex-shrink-0 shadow-sm">
+                                <div class="flex flex-col justify-center flex-grow">
+                                    <span class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">
+                                        ${item.isImportant ? '<span class="text-red-500 mr-1 font-black">🔥 중요</span> | ' : ''}
+                                        ${item.source}
+                                    </span>
+                                    <h4 class="font-bold text-lg group-hover:text-blue-600 leading-snug transition tracking-tight">
+                                        <span class="text-blue-600 mr-1">[${item.brand}]</span>${item.title}
+                                    </h4>
+                                    <p class="text-sm text-gray-500 line-clamp-2 mt-2">${item.desc}</p>
+                                </div>
+                            </div>
+                            ${item.insight ? `
+                            <div class="mt-5 bg-gray-50 p-4 rounded-2xl border-l-4 border-blue-400">
+                                <p class="text-xs font-bold text-blue-800 mb-1">💡 R&D 기술 고찰점</p>
+                                <p class="text-xs text-gray-700 leading-relaxed font-medium">${item.insight}</p>
+                            </div>` : ''}
+                        </div>`).join('');
+                };
+                
+                renderItems(data.ai, 'ai-list');
+                renderItems(data.auto, 'auto-list');
+
+            } catch (error) {
+                document.getElementById('magazine-content').innerHTML = `
+                    <div class="py-24 text-center">
+                        <i class="fas fa-newspaper text-6xl text-gray-200 mb-6"></i>
+                        <h3 class="text-2xl font-black text-gray-400 mb-2">${date} 리포트가 아직 발행되지 않았습니다.</h3>
+                        <p class="text-gray-400">다른 날짜를 선택해 주세요.</p>
+                    </div>`;
+                document.getElementById('display-issue').textContent = "NO DATA";
+            }
         }
 
         window.onload = () => {
-            const today = "2026-03-30"; 
+            const today = new Date().toISOString().split('T')[0];
             document.getElementById('date-picker').value = today;
             loadReport(today);
         };
