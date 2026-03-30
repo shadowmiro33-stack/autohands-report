@@ -8,15 +8,15 @@ var archiveData = {
             "url": "https://youtu.be/JMbguxdvwqY",
             "source": "김한용의 Mocha"
         },
-        "main": {
+"main": {
             "isImportant": true,
-            "brand": "현대차",
-            "title": "현대차, 주총서 '렌탈 사업' 목적 추가... 모빌리티 플랫폼 사업 본격화",
-            "desc": "현대자동차가 정관에 '자동차 대여사업'을 추가하며 단순 제조를 넘어 차량 생애주기 전체를 직접 관리하는 통합 렌탈 비즈니스에 나셉니다.",
-            "img": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800",
-            "link": "https://www.edaily.co.kr/news/read?newsId=02656806638827760",
-            "source": "이데일리",
-            "insight": "제조사의 렌탈 시장 직접 진출은 중고차 매입 및 잔존가치 산정 데이터의 수직계열화를 의미합니다. 당사가 추진 중인 글로벌 중개 플랫폼 역시 제조사 데이터와 연동되는 정밀 프라이싱 엔진을 탑재하여 대응력을 강화해야 합니다."
+            "brand": "케이카",
+            "title": "케이카, 2026년 기업가치 제고 계획 공개 및 C2C 베타 오픈",
+            "desc": "직영 인프라를 개인 간 거래 시장으로 확장하여 유효 시장을 넓히고 주주환원 정책을 발표했습니다.",
+            "img": "https://dtd31o1ybbmk8.cloudfront.net/photos/12c9c849d7f9a747c11d310a3592f9f5/thumb.png",
+            "link": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=646893",
+            "source": "디지털투데이",
+            "insight": "대형 직영사의 C2C 진출은 매물 확보 경쟁을 예고합니다. 당사의 글로벌 중개 플랫폼으로 유입되는 매물의 다각화를 공격적으로 고민해야 합니다."
         },
         "ai": [
             {
