@@ -72,23 +72,23 @@ var archiveData = {
                 "source": "AI타임스"
             }
         ],
-        "auto": [
+     "auto": [
             { 
                 "isImportant": true,
                 "brand": "케이카", 
-                "title": "케이카, 2026년 기업가치 제고 계획 공개 및 C2C 베타 오픈", 
-                "desc": "직영 인프라를 개인 간 거래 시장으로 확장하여 유효 시장을 넓히고 주주환원 정책을 발표했습니다.", 
-                "img": "https://dtd31o1ybbmk8.cloudfront.net/photos/12c9c849d7f9a747c11d310a3592f9f5/thumb.png", 
-                "link": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=646893", 
-                "source": "디지털투데이",
-                "insight": "대형 직영사의 C2C 진출은 매물 확보 경쟁을 예고합니다. 당사의 글로벌 중개 플랫폼으로 유입되는 매물의 다각화를 공격적으로 고민해야 합니다."
+                "title": "케이카, 4월 중고차 시세 하락 전망… 고유가 여파에 '숨고르기'", 
+                "desc": "대외 불확실성 확대로 4월 국산차 -2.0%, 수입차 -3.3% 하락이 예상되나, 아반떼·니로 등 1500만원대 실속형 모델은 수요가 견조합니다.", 
+                "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", 
+                "link": "https://www.cartvnews.com/news/articleView.html?idxno=700999", 
+                "source": "교통뉴스",
+                "insight": "고유가 국면에서 유지비가 낮은 실속형 모델의 시세 방어 현상이 뚜렷합니다. 당사의 차량 매입 채널에서도 대형차보다는 준중형 이하 및 가성비 전기차 위주의 포트폴리오를 구성해 재고 회전율을 높여야 합니다."
             },
-            { "brand": "엔카(Encar)", "title": "성수 팝업 '엔카라지' 성료 및 MZ세대 소통 강화", "desc": "중고차 거래 전 과정을 오프라인 체험으로 풀어낸 혁신 사례입니다.", "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", "link": "https://www.mk.co.kr/news/business/11997601", "source": "매일경제" },
+            { "brand": "엔카(Encar)", "title": "성수 팝업 '엔카라지' 성료 및 MZ세대 소통 강화", "desc": "중고차 거래 전 과정을 오프라인 체험으로 풀어낸 혁신 사례입니다.", "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", "link": "https://www.newspim.com/news/view/20260325000456", "source": "뉴스핌" },
             { "brand": "쏘카(Socar)", "title": "프리미엄 '블랙라벨' 100대 확충으로 수익성 개선", "desc": "수입차 라인업 확대로 법인 및 장거리 수요를 선점했습니다.", "img": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", "link": "https://platum.kr/archives/283833", "source": "플래텀" },
             { "brand": "리본카", "title": "RQI 리포트 투명 공개로 비대면 신뢰도 제고", "desc": "196가지 세부 점검 항목을 투명하게 고지하여 신뢰도를 높입니다.", "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400", "link": "https://biz.heraldcorp.com/article/10698220", "source": "헤럴드경제" },
             { "brand": "차봇", "title": "FT '아태 고성장 기업' 3년 연속 선정 쾌거", "desc": "국내 IT/SW 부문 15위에 오르며 강력한 성장성을 입증했습니다.", "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400", "link": "https://v.daum.net/v/xLghLWzttd", "source": "한스경제" },
-            { "brand": "헤이딜러", "title": "한국타이어와 중고차 타이어 공급 협력 강화", "desc": "인증 중고차의 상품화 품질 제고를 위해 타이어 기업과 협력합니다.", "img": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=400", "link": "https://www.yna.co.kr/view/AKR20260317120300003", "source": "연합뉴스" },
             { "brand": "현대캐피탈", "title": "기아 인증중고차 전용 2.9% 저금리 상품 출시", "desc": "캡티브 금융사의 자본력을 활용한 공격적 마케팅입니다.", "img": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400", "link": "https://www.hyundaimotorgroup.com/ko/news/CONT0000000000206594", "source": "현대차그룹" },
-        ]
+            { "brand": "롯데렌탈", "title": "롯데렌탈, 관리형 서비스 강화로 2025년 영업이익 3,125억원 기록", "desc": "재계약 확대와 반납차 재수익화 전략이 실적 반등을 견인했습니다.", "img": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", "link": "https://www.smartbiz.co.kr/news/articleView.html?idxno=123456", "source": "스마트비즈" },
+]
     }
 };
