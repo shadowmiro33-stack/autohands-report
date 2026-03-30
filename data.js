@@ -84,16 +84,6 @@ var archiveData = {
                 "insight": "고유가 국면에서 유지비가 낮은 실속형 모델의 시세 방어 현상이 뚜렷합니다. 당사의 차량 매입 채널에서도 대형차보다는 준중형 이하 및 가성비 전기차 위주의 포트폴리오를 구성해 재고 회전율을 높여야 합니다."
             },
             {
-                "isImportant": true,
-                "brand": "케이카",
-                "title": "케이카, 2026년 기업가치 제고 계획 공개 및 C2C 베타 오픈",
-                "desc": "직영 인프라를 개인 간 거래 시장으로 확장하여 유효 시장을 넓히고 주주환원 정책을 발표했습니다.",
-                "img": "https://dtd31o1ybbmk8.cloudfront.net/photos/12c9c849d7f9a747c11d310a3592f9f5/thumb.png",
-                "link": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=646893",
-                "source": "디지털투데이",
-                "insight": "대형 직영사의 C2C 진출은 매물 확보 경쟁을 예고합니다. 당사의 글로벌 중개 플랫폼으로 유입되는 매물의 다각화를 공격적으로 고민해야 합니다."
-            },
-            {
                 "brand": "엔카(Encar)",
                 "title": "성수 팝업 '엔카라지' 성료 및 MZ세대 소통 강화",
                 "desc": "중고차 거래 전 과정을 오프라인 체험으로 풀어낸 혁신 사례입니다.",
