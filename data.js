@@ -40,17 +40,7 @@ var archiveData = {
         },
         // 💡 다양한 매체로 재구성된 AI 파트
         ai: [
-            { 
-                isImportant: true, 
-                brand: "OpenAI", 
-                title: "오픈AI, 스스로 추론하는 'GPT-5' 올 여름 출시... 인간 지능 육박하나", 
-                desc: "단순 다음 단어 예측을 넘어 논리적 추론 과정을 거치는 차세대 LLM이 공개를 앞두고 있습니다.", 
-                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400", 
-                link: "https://www.zdnet.co.kr/view/?no=20260328091000", 
-                source: "지디넷코리아",
-                insight: "추론 능력이 강화된 모델은 당사가 추진 중인 '지능형 고객 대응 시스템'의 복잡한 예외 상황 처리 능력을 획기적으로 높일 수 있습니다. 출시 즉시 API 연동 테스트가 필요합니다."
-            },
-            { 
+                       { 
                 isImportant: true, 
                 brand: "구글", 
                 title: "구글, AI 메모리 효율 10배 높인 '터보퀀트' 신기술 공개", 
@@ -60,11 +50,30 @@ var archiveData = {
                 source: "연합뉴스",
                 insight: "온디바이스 AI 트렌드에 대응하기 위한 핵심 기술입니다. 당사 모바일 앱 내에 가벼운 AI 기능을 탑재할 때 클라우드 비용을 절감할 수 있는 전략적 대안이 될 수 있습니다."
             },
-            { brand: "삼성전자", title: "삼성전자, 'AI 비서' 탑재한 일체형 가전 전격 공개", desc: "사용자의 습관을 학습하여 스스로 동작하는 진정한 의미의 스마트 가전 시대가 열렸습니다.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400", link: "https://www.chosun.com/economy/tech_it/2026/03/26/OSLKWJUQMZDAVIQJPFHE36SNFU/", source: "조선일보" },
-            { brand: "미디어로그", title: "AI 에이전트, 고객 상담 넘어 직접 계약까지 척척", desc: "단순 문답 수준을 벗어나 본인 인증과 서류 검토까지 수행하는 AI 에이전트 서비스가 상용화되었습니다.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=208500", source: "AI타임스" },
-            { brand: "테크크런치", title: "생성형 AI 검색 '퍼플렉시티', 유료 구독자 100만 명 돌파", desc: "전통적인 키워드 검색 방식에서 대화형 답변 방식으로 검색 시장의 패러다임이 빠르게 이동 중입니다.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400", link: "https://techcrunch.com/2026/03/perplexity-milestone", source: "TechCrunch" },
-            { brand: "행안부", title: "정부, '공공부문 AI 도입 가이드라인' 확정 발표", desc: "공공 서비스 혁신을 위해 민간 기업의 AI 솔루션을 적극 도입하기 위한 표준 절차가 마련되었습니다.", img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400", link: "https://www.mois.go.kr/frt/bbs/type010/commonSelectBoardArticle.do?nttId=124639", source: "행정안전부" }
-        ],
+           { 
+                isImportant: true, 
+                brand: "델로이트", 
+                title: "에이전틱 AI 시대의 커머스 미래와 결제 산업", 
+                desc: "AI 에이전트가 직접 판단하고 거래를 실행하는 '에이전틱 커머스'가 미래 결제 산업의 핵심으로 부상하고 있습니다.", 
+                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400", 
+                link: "https://www.deloitte.com/kr/ko/Industries/financial-services/perspectives/future-of-commerce-agentic-ai.html", 
+                source: "Deloitte Korea",
+                insight: "당사의 외국인 대상 모빌리티 서비스에 에이전틱 결제 모듈을 검토한다면, 복잡한 예약 및 결제 프로세스를 획기적으로 간소화하여 사용자 경험을 극대화할 수 있습니다."
+            },
+            { 
+                isImportant: true, 
+                brand: "GeekNews", 
+                title: "데이터 엔지니어링: 에이전트 중심 설계", 
+                desc: "단순 통계 조회를 넘어 AI 에이전트가 기본 사용자로 작동하는 환경을 전제로 한 인프라 설계가 주목받고 있습니다.", 
+                img: "https://images.unsplash.com/photo-1558494949-ef0109121c64?w=400", 
+                link: "https://news.hada.io/topic?id=26155", 
+                source: "GeekNews",
+                insight: "사내 데이터 분석 인프라 구축 시, AI가 직접 데이터를 조회하고 보고서를 생성할 수 있는 구조로 설계하여 리소스 효율성을 높여야 합니다."
+            },
+            { brand: "지디넷코리아", title: "생성형 AI, 기업 생산성 40% 높인다... 실제 도입 사례 급증", desc: "국내외 주요 기업들이 단순 챗봇을 넘어 실무 프로세스에 AI를 결합하여 실질적인 성과를 내기 시작했습니다.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400", link: "https://zdnet.co.kr/view/?no=20241121102555", source: "지디넷코리아" },
+            { brand: "연합뉴스", title: "인공지능이 뉴스도 팩트체크... 진화하는 AI 검증 기술", desc: "허위 정보 확산을 막기 위해 AI가 실시간으로 데이터의 진위 여부를 판별하는 기술이 고도화되고 있습니다.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400", link: "https://www.yna.co.kr/view/AKR20240325088200017", source: "연합뉴스" },
+            { brand: "AI타임스", title: "AI 법(AI Act) 본격화: 고위험 AI에 대한 규제 가이드라인 확정", desc: "글로벌 시장 진출을 위해 반드시 준수해야 할 AI 윤리 및 보안 규제가 구체화되었습니다.", img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400", link: "https://www.aitimes.com/news/articleView.html?idxno=158221", source: "AI타임스" }
+            ],
         auto: [
             { 
                 isImportant: true,
