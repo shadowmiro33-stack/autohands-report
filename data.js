@@ -76,86 +76,22 @@ var archiveData = {
             { 
                 "isImportant": true,
                 "brand": "케이카", 
-                "title": "케이카 “고유가·전쟁에 중고차 시장 숨고르기… 국산 -2.0% 하락 전망”", 
-                "desc": "대외 불확실성 확대로 4월 중고차 시세가 국산차 -2.0%, 수입차 -3.3% 하락할 것으로 예측되었습니다. [cite: 5, 11]", 
-                "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", 
-                "link": "https://daily.hankooki.com/news/articleView.html?idxno=1067252", 
-                "source": "데일리한국",
-                "insight": "시장 위축기에는 시세 변동성이 커지므로 '실시간 데이터 기반 프라이싱'이 핵심입니다. 당사의 자산 매각 시스템에 적용될 시세 엔진 고도화 기회로 삼아야 합니다."
+                "title": "케이카, 2026년 기업가치 제고 계획 공개 및 C2C 베타 오픈", 
+                "desc": "직영 인프라를 개인 간 거래 시장으로 확장하여 유효 시장을 넓히고 주주환원 정책을 발표했습니다.", 
+                "img": "https://dtd31o1ybbmk8.cloudfront.net/photos/12c9c849d7f9a747c11d310a3592f9f5/thumb.png", 
+                "link": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=646893", 
+                "source": "디지털투데이",
+                "insight": "대형 직영사의 C2C 진출은 매물 확보 경쟁을 예고합니다. 당사의 글로벌 중개 플랫폼으로 유입되는 매물의 다각화를 공격적으로 고민해야 합니다."
             },
-            { 
-                "isImportant": true,
-                "brand": "엔카(Encar)", 
-                "title": "성수 팝업 '엔카라지' 성료… MZ세대 1만 명 방문", 
-                "desc": "중고차 거래 전 과정을 오프라인 체험형 콘텐츠로 풀어내며 큰 호응을 얻었습니다. [cite: 7, 11]", 
-                "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", 
-                "link": "https://www.newspim.com/news/view/20260325000456", 
-                "source": "뉴스핌" 
-            },
-            { 
-                "brand": "쏘카(Socar)", 
-                "title": "프리미엄 '블랙라벨' 100대 확충으로 수익성 강화", 
-                "desc": "수입차 및 고급 세단 라인업 확대로 법인 및 장거리 수요를 선점하고 있습니다. [cite: 20]", 
-                "img": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", 
-                "link": "https://platum.kr/archives/283833", 
-                "source": "플래텀" 
-            },
-            { 
-                "brand": "리본카", 
-                "title": "엔트리카 선호도 1위는 현대 ‘아반떼’… 똑똑한 소비 성향 뚜렷", 
-                "desc": "설문조사 결과 첫 차 구매 고객들이 가장 선호하는 모델은 아반떼인 것으로 나타났습니다. [cite: 6, 11]", 
-                "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400", 
-                "link": "https://www.pointdaily.co.kr/news/articleView.html?idxno=195456", 
-                "source": "포인트데일리" 
-            },
-            { 
-                "brand": "롯데렌탈", 
-                "title": "롯데렌탈, 관리형 서비스 강화로 2025년 영업이익 3,125억원 기록", 
-                "desc": "재계약 확대와 반납차 재수익화 전략이 실적 반등을 견인했습니다. [cite: 9, 11]", 
-                "img": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", 
-                "link": "https://www.smartbiz.co.kr/news/articleView.html?idxno=123456", 
-                "source": "스마트비즈" 
-            },
-            { 
-                "brand": "차봇", 
-                "title": "FT '아태 고성장 기업' 3년 연속 선정… 강력한 성장성 입증", 
-                "desc": "국내 IT/SW 부문 15위에 오르며 오토커머스 플랫폼의 저력을 보여주었습니다. [cite: 20]", 
-                "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400", 
-                "link": "https://v.daum.net/v/xLghLWzttd", 
-                "source": "한스경제" 
-            },
-            { 
-                "brand": "현대캐피탈", 
-                "title": "기아 인증중고차 전용 '저금리 할부' 론칭… 최저 2.9% 지원", 
-                "desc": "캡티브 금융사의 이점을 활용한 파격적인 금리 혜택을 제공합니다. [cite: 15, 20]", 
-                "img": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400", 
-                "link": "https://www.newsworker.co.kr/news/articleView.html?idxno=328456", 
-                "source": "뉴스워커" 
-            },
-            { 
-                "brand": "중국 자동차", 
-                "title": "중국 자동차, 작년 2,700만대 판매하며 사상 첫 세계 1위 등극", 
-                "desc": "일본을 제치고 글로벌 신차 시장의 새로운 패권자로 부상했습니다. [cite: 19, 20]", 
-                "img": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400", 
-                "link": "https://www.hankyung.com/article/2026032212345", 
-                "source": "한국경제" 
-            },
-            { 
-                "brand": "롯데오토옥션", 
-                "title": "롯데오토옥션 오픈 12주년… 누적 출품 60만대 돌파", 
-                "desc": "디지털 혁신을 통해 신뢰받는 중고차 경매 시스템을 구축하고 있습니다. [cite: 10, 11]", 
-                "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400", 
-                "link": "https://www.news-dream.com/news/articleView.html?idxno=123456", 
-                "source": "뉴스드림" 
-            },
-            { 
-                "brand": "친환경 정책", 
-                "title": "전기차 살 때 배터리 정보 공개… 안전 및 알 권리 강화", 
-                "desc": "제조사 및 생산국 공개 의무화를 통해 전기차 안전 관리가 강화됩니다. [cite: 23, 24]", 
-                "img": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=400", 
-                "link": "https://www.yna.co.kr/view/AKR20260322123456", 
-                "source": "연합뉴스" 
-            }
+            { "brand": "엔카(Encar)", "title": "성수 팝업 '엔카라지' 성료 및 MZ세대 소통 강화", "desc": "중고차 거래 전 과정을 오프라인 체험으로 풀어낸 혁신 사례입니다.", "img": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", "link": "https://www.mk.co.kr/news/business/11997601", "source": "매일경제" },
+            { "brand": "쏘카(Socar)", "title": "프리미엄 '블랙라벨' 100대 확충으로 수익성 개선", "desc": "수입차 라인업 확대로 법인 및 장거리 수요를 선점했습니다.", "img": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400", "link": "https://platum.kr/archives/283833", "source": "플래텀" },
+            { "brand": "리본카", "title": "RQI 리포트 투명 공개로 비대면 신뢰도 제고", "desc": "196가지 세부 점검 항목을 투명하게 고지하여 신뢰도를 높입니다.", "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400", "link": "https://biz.heraldcorp.com/article/10698220", "source": "헤럴드경제" },
+            { "brand": "차봇", "title": "FT '아태 고성장 기업' 3년 연속 선정 쾌거", "desc": "국내 IT/SW 부문 15위에 오르며 강력한 성장성을 입증했습니다.", "img": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400", "link": "https://v.daum.net/v/xLghLWzttd", "source": "한스경제" },
+            { "brand": "헤이딜러", "title": "한국타이어와 중고차 타이어 공급 협력 강화", "desc": "인증 중고차의 상품화 품질 제고를 위해 타이어 기업과 협력합니다.", "img": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=400", "link": "https://www.yna.co.kr/view/AKR20260317120300003", "source": "연합뉴스" },
+            { "brand": "현대캐피탈", "title": "기아 인증중고차 전용 2.9% 저금리 상품 출시", "desc": "캡티브 금융사의 자본력을 활용한 공격적 마케팅입니다.", "img": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400", "link": "https://www.hyundaimotorgroup.com/ko/news/CONT0000000000206594", "source": "현대차그룹" },
+            { "brand": "카바나(Carvana)", "title": "미국 카바나 주식 분할 및 물류 효율화 발표", "desc": "물류 효율화와 수익성 개선을 기반으로 이커머스 패권을 공고히 합니다.", "img": "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400", "link": "https://investors.carvana.com/news-releases/2026", "source": "Carvana IR" },
+            { "brand": "투루카", "title": "주말 전 차종 50% 할인으로 시장 점유율 공세", "desc": "휴맥스 인프라를 활용해 점유율 확대를 꾀하고 있습니다.", "img": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400", "link": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=642720", "source": "디지털투데이" },
+            { "brand": "카와우(Carwow)", "title": "영국 카와우 온라인 판매 채널 대폭 확대", "desc": "온라인 플랫폼과 오프라인 딜러의 상생 모델을 구축했습니다.", "img": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400", "link": "https://www.carwow.co.uk/news", "source": "Carwow News" }
         ]
     }
 };
