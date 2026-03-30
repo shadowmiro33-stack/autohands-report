@@ -12,7 +12,7 @@
         .hover-scale { transition: transform 0.3s ease; }
         .hover-scale:hover { transform: translateY(-4px); }
         
-        /* 모달 제어용 CSS */
+        /* 💡 모달 제어용 CSS */
         #article-modal { display: none; }
         #article-modal.active { display: flex; }
     </style>
@@ -47,10 +47,15 @@
     <div id="article-modal" class="fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4" onclick="clickOutsideModal(event)">
         <div class="bg-white w-[95vw] max-w-[1600px] h-[95vh] rounded-2xl overflow-hidden flex flex-col relative shadow-2xl" onclick="event.stopPropagation()">
             <div class="p-3 border-b flex justify-between items-center bg-gray-50">
-                <span class="text-sm font-bold text-gray-600 ml-2">OASIS 원문 리포트 뷰어</span>
-                <button type="button" onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-800 rounded-full hover:bg-black hover:text-white transition">
-                    <i class="fas fa-times"></i>
-                </button>
+                <span class="text-sm font-bold text-gray-600 ml-3">OASIS 원문 리포트 뷰어</span>
+                <div class="flex gap-2">
+                    <button type="button" id="modal-header-btn" class="px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded-lg hover:bg-blue-700 transition shadow-sm">
+                        새 창으로 보기 <i class="fas fa-external-link-alt ml-1"></i>
+                    </button>
+                    <button type="button" onclick="closeArticle()" class="w-10 h-10 flex items-center justify-center bg-gray-200 text-gray-800 rounded-lg hover:bg-black hover:text-white transition">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
             </div>
             <iframe id="article-frame" src="" class="w-full h-full border-none bg-white"></iframe>
             <div id="fallback-ui" class="w-full h-full flex flex-col items-center justify-center bg-gray-50 hidden">
@@ -65,7 +70,14 @@
     </div>
 
     <script>
-        const blockedSites = ['naver.com', 'chosun.com', 'newsis.com', 'donga.com', 'yna.co.kr', 'edaily.co.kr'];
+        // 💡 대폭 추가된 국내 주요 언론사 및 포털 차단 리스트
+        const blockedSites = [
+            'naver.com', 'daum.net', 'chosun.com', 'joongang.co.kr', 'donga.com', 
+            'mk.co.kr', 'hankyung.com', 'sedaily.com', 'fnnews.com', 'edaily.co.kr',
+            'etnews.com', 'zdnet.co.kr', 'bloter.net', 'ddaily.co.kr', 'aitimes.com',
+            'yna.co.kr', 'newsis.com', 'news1.kr', 'ajunews.com', 'bizwatch.co.kr',
+            'motorgraph.com', 'autodiary.kr', 'carguy.kr', 'autotribune.co.kr'
+        ];
 
         function smartOpen(url) {
             const isBlocked = blockedSites.some(site => url.includes(site));
@@ -73,17 +85,18 @@
             const frame = document.getElementById('article-frame');
             const fallback = document.getElementById('fallback-ui');
             const fallbackBtn = document.getElementById('fallback-btn');
+            const headerBtn = document.getElementById('modal-header-btn');
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
+            // 상단 만능 버튼에 현재 URL 연결
+            headerBtn.onclick = () => { window.open(url, '_blank'); closeArticle(); };
+
             if (isBlocked) {
                 frame.style.display = 'none';
                 fallback.style.display = 'flex';
-                fallbackBtn.onclick = () => {
-                    window.open(url, '_blank');
-                    closeArticle();
-                };
+                fallbackBtn.onclick = () => { window.open(url, '_blank'); closeArticle(); };
             } else {
                 frame.style.display = 'block';
                 fallback.style.display = 'none';
@@ -91,14 +104,14 @@
             }
         }
 
-        // 💡 동반 종료(새로고침) 버그 해결: src를 "" 대신 "about:blank"로 비워줌
+        // 💡 닫을 때 튕김 현상 방지 로직 (about:blank)
         function closeArticle() {
             document.getElementById('article-modal').classList.remove('active');
             document.getElementById('article-frame').src = "about:blank"; 
             document.body.style.overflow = 'auto';
         }
 
-        // 💡 까만 바탕화면 눌렀을 때 닫히는 기능
+        // 💡 바탕화면 클릭 시 닫기
         function clickOutsideModal(event) {
             if (event.target.id === 'article-modal') {
                 closeArticle();
@@ -112,17 +125,20 @@
             return `https://www.youtube.com/embed/${id}`;
         }
 
+        // 💡 Fetch API 기반 데이터 최적화 호출
         async function loadReport(date) {
             const content = document.getElementById('magazine-content');
             content.innerHTML = `<div class="py-20 text-center text-gray-400"><i class="fas fa-circle-notch fa-spin text-3xl mb-4"></i><p>오아시스 리포트를 불러오는 중입니다...</p></div>`;
 
             try {
+                // 루트 폴더 아래 data 폴더에서 해당 날짜 JSON을 가져옵니다.
                 const response = await fetch(`./data/${date}.json`);
                 if (!response.ok) throw new Error('Data not found');
                 
                 const data = await response.json();
                 document.getElementById('display-issue').textContent = data.issue;
 
+                // 💡 R&D 기술 고찰점 렌더링
                 const mainInsightHtml = data.main.insight ? `
                     <div class="mt-6 bg-blue-50/50 p-6 rounded-2xl border-l-4 border-blue-600">
                         <p class="text-sm font-black text-blue-900 mb-2"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>R&D 기술 고찰점</p>
@@ -168,6 +184,7 @@
                     </div>
                 `;
 
+                // 💡 리스트 렌더링 (여백 확대, 브랜드 강조)
                 const renderItems = (items, id) => {
                     document.getElementById(id).innerHTML = items.map(item => `
                         <div class="group bg-white rounded-3xl shadow-sm border border-gray-100 p-6 transition hover:shadow-lg">
@@ -200,14 +217,15 @@
                     <div class="py-24 text-center">
                         <i class="fas fa-newspaper text-6xl text-gray-200 mb-6"></i>
                         <h3 class="text-2xl font-black text-gray-400 mb-2">${date} 리포트가 아직 발행되지 않았습니다.</h3>
-                        <p class="text-gray-400">다른 날짜를 선택해 주세요.</p>
+                        <p class="text-gray-400">우측 상단에서 날짜를 선택해 주세요.</p>
                     </div>`;
                 document.getElementById('display-issue').textContent = "NO DATA";
             }
         }
 
         window.onload = () => {
-            const today = new Date().toISOString().split('T')[0];
+            // 오늘 날짜로 기본 세팅 (여기서는 테스트를 위해 31일로 고정)
+            const today = "2026-03-31"; 
             document.getElementById('date-picker').value = today;
             loadReport(today);
         };
