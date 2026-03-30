@@ -2,117 +2,74 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>AUTOHANDS Weekly Magazine</title>
+    <title>AUTOHANDS Digital Magazine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
-        body { font-family: 'Noto Sans KR', sans-serif; word-break: keep-all; }
-        .magazine-shadow { box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
-        .hover-scale { transition: transform 0.3s ease; cursor: pointer; }
-        .hover-scale:hover { transform: scale(1.02); }
-        #article-modal { display: none; }
-        #article-modal.active { display: flex; }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <div class="max-w-6xl mx-auto px-6 py-12">
-        <header class="flex justify-between items-end border-b-4 border-black pb-4 mb-12">
-            <div>
-                <h2 class="text-blue-600 font-bold tracking-tighter uppercase text-sm">Autohands R&D Center</h2>
-                <h1 class="text-4xl font-black italic">WEEKLY MAGAZINE</h1>
-            </div>
-            <div class="text-right flex flex-col items-end gap-2">
-                <input type="date" id="date-picker" class="border-2 border-black rounded-lg px-2 py-1 font-bold text-sm" onchange="loadReport(this.value)">
-                <p id="display-issue" class="font-bold text-lg text-blue-600"></p>
-            </div>
-        </header>
-
-        <div id="magazine-content">
-            </div>
-    </div>
-
-    <div id="article-modal" class="fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4">
-        <div class="bg-white w-full max-w-5xl h-[90vh] rounded-3xl overflow-hidden flex flex-col">
-            <div class="p-4 border-b flex justify-end"><button onclick="closeArticle()" class="bg-black text-white px-4 py-2 rounded-xl">닫기</button></div>
-            <iframe id="article-frame" src="" class="w-full h-full border-none"></iframe>
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <div class="max-w-5xl mx-auto px-4 py-10">
+        <div class="flex justify-between items-center mb-10 border-b-2 border-black pb-5">
+            <h1 class="text-3xl font-black uppercase tracking-tighter">Autohands R&D</h1>
+            <input type="date" id="date-picker" class="border p-2 rounded-lg font-bold shadow-sm" onchange="loadReport(this.value)">
         </div>
+
+        <div id="content-view">
+            </div>
     </div>
 
     <script src="data.js"></script>
     <script>
-        const blockedSites = ['naver.com', 'chosun.com', 'newsis.com', 'donga.com', 'yna.co.kr', 'edaily.co.kr'];
-
-        function smartOpen(url) {
-            if (blockedSites.some(site => url.includes(site))) {
-                window.open(url, '_blank');
-            } else {
-                document.getElementById('article-frame').src = url;
-                document.getElementById('article-modal').classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticle() {
-            document.getElementById('article-modal').classList.remove('active');
-            document.getElementById('article-frame').src = "";
-            document.body.style.overflow = 'auto';
+        // 유튜브 URL에서 ID 추출하는 자동화 함수
+        function getYoutubeEmbed(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            const id = (match && match[2].length == 11) ? match[2] : null;
+            return `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>`;
         }
 
         function loadReport(date) {
             const data = archiveData[date];
-            const content = document.getElementById('magazine-content');
+            const view = document.getElementById('content-view');
+            
             if(!data) {
-                content.innerHTML = `<div class="py-20 text-center text-gray-400 font-bold text-xl">해당 날짜의 리포트가 없습니다.</div>`;
+                view.innerHTML = `<div class="text-center py-20 text-gray-400">새로운 기사가 없습니다.</div>`;
                 return;
             }
 
-            document.getElementById('display-issue').textContent = data.issue;
-            content.innerHTML = `
-                <section class="mb-16 bg-black rounded-3xl overflow-hidden p-8 text-white grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
-                    <div class="lg:col-span-2 aspect-video rounded-2xl overflow-hidden">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/${data.video.youtubeId}" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div>
-                        <span class="text-red-500 font-bold text-sm"><i class="fab fa-youtube mr-2"></i>MUST WATCH</span>
-                        <h2 class="text-2xl font-black mt-4 mb-2">${data.video.title}</h2>
-                        <p class="text-gray-400 text-sm">${data.video.desc}</p>
-                    </div>
-                </section>
-
-                <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 items-center">
-                    <div class="rounded-3xl overflow-hidden magazine-shadow hover-scale" onclick="smartOpen('${data.main.link}')">
-                        <img src="${data.main.img}" class="w-full h-[400px] object-cover">
-                    </div>
-                    <div>
-                        <h2 class="text-4xl font-black leading-tight mb-6">${data.main.title}</h2>
-                        <p class="text-lg text-gray-600 mb-8">${data.main.desc}</p>
-                        <button onclick="smartOpen('${data.main.link}')" class="font-bold border-b-2 border-black">본문 읽기 <i class="fas fa-arrow-right ml-2"></i></button>
-                    </div>
-                </section>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                    <div id="ai-list" class="space-y-8"></div>
-                    <div id="auto-list" class="space-y-8"></div>
+            view.innerHTML = `
+                <div class="bg-black aspect-video rounded-3xl overflow-hidden mb-10">
+                    ${getYoutubeEmbed(data.video.url)}
+                </div>
+                
+                <h2 class="text-2xl font-bold mb-5 text-blue-600">${data.issue}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <section>
+                        <h3 class="font-black text-xl mb-5 border-l-4 border-black pl-3 text-red-600">AI TECH (10)</h3>
+                        <div id="ai-container" class="space-y-6"></div>
+                    </section>
+                    <section>
+                        <h3 class="font-black text-xl mb-5 border-l-4 border-black pl-3 text-blue-600">AUTO PLATFORM (10)</h3>
+                        <div id="auto-container" class="space-y-6"></div>
+                    </section>
                 </div>
             `;
 
-            const renderItems = (items, id) => {
-                document.getElementById(id).innerHTML = items.map(item => `
-                    <div class="flex gap-4 group hover-scale" onclick="smartOpen('${item.link}')">
-                        <img src="${item.img}" class="w-24 h-24 rounded-2xl object-cover magazine-shadow flex-shrink-0">
-                        <div>
-                            <span class="text-[10px] font-bold text-blue-600 uppercase">${item.cat || 'TECH'}</span>
-                            <h4 class="font-bold text-lg group-hover:text-blue-600 leading-snug">${item.title}</h4>
-                            <p class="text-sm text-gray-500 line-clamp-2 mt-1">${item.desc}</p>
-                        </div>
-                    </div>`).join('');
+            const renderList = (list, containerId) => {
+                document.getElementById(containerId).innerHTML = list.map(item => `
+                    <div class="p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition cursor-pointer border" onclick="window.open('${item.link}')">
+                        <p class="text-[10px] text-gray-400 font-bold">${item.source || 'News'}</p>
+                        <h4 class="font-bold text-lg leading-tight mt-1">${item.title}</h4>
+                        <p class="text-sm text-gray-500 mt-2 line-clamp-2">${item.desc}</p>
+                    </div>
+                `).join('');
             };
-            renderItems(data.ai, 'ai-list'); renderItems(data.auto, 'auto-list');
+
+            renderList(data.ai, 'ai-container');
+            renderList(data.auto, 'auto-container');
         }
 
         window.onload = () => {
-            const today = "2026-03-30"; // 기본 로드 날짜
+            const today = "2026-03-30";
             document.getElementById('date-picker').value = today;
             loadReport(today);
         };
