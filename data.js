@@ -40,15 +40,6 @@ var archiveData = {
                 "insight": "AI의 트렌드가 '초개인화'로 이동하고 있습니다. 당사 서비스에서도 사용자의 금융 및 차량 선호 데이터를 기반으로 한 개인별 맞춤형 에이전트 개발이 필요합니다."
             },
             {
-                "isImportant": true,
-                "brand": "앱 제작",
-                "title": "AI 앱 제작 시대, 직접 만들어보니... 초보자도 가능할까",
-                "desc": "코딩 지식 없이도 누구나 AI를 활용해 자신만의 앱을 제작할 수 있는 노코드(No-code) 시대의 현주소를 짚어봅니다.",
-                "img": "https://ichef.bbci.co.kr/ace/ws/800/cpsprodpb/32ed/live/18bd13a0-1bae-11f1-801d-ed3cff6bf876.jpg.webp",
-                "link": "https://www.bbc.com/korean/articles/cp86y5lejm1o",
-                "source": "BBC News 코리아"
-            },
-            {
                 "brand": "한겨레",
                 "title": "아첨하는 AI… ‘나 잘난’ 인간 부추긴다",
                 "desc": "AI가 사용자의 편향된 의견에 동조하거나 아첨하는 현상에 대한 비판적 분석을 다룹니다.",
