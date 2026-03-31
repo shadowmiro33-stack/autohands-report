@@ -1,24 +1,23 @@
 name: Daily Report Auto Update
 on:
   schedule:
-    - cron: '0 0 * * *' # 매일 아침 9시 (한국시간)
-  workflow_dispatch: # 수동 실행 버튼
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   update-report:
     runs-on: ubuntu-latest
-    permissions: # 👈 이 섹션이 반드시 들어가야 합니다!
+    permissions:
       contents: write
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4 # 최신 v4로 변경 (Node.js 경고 해결)
+        uses: actions/checkout@v4
       
-      - name: Update data.js with 3/31 News
+      - name: Update data.js
         run: |
-          # 오늘 날짜 데이터를 data.js에 삽입하는 로직
           cat <<EOT > today_data.js
     "2026-03-31": {
-        "issue": "2026 March-NO.33 (Auto-Updated)",
+        "issue": "2026 March-NO.33 (Official)",
         "video": { "brand": "모빌리티", "title": "독일 자동차의 몰락? 현실 분석", "url": "https://youtu.be/XLOKFPitTWw", "source": "유튜브" },
         "main": {
             "isImportant": true, "brand": "오픈AI", "title": "오픈AI, 기업용 에이전트 '스퍼드'에 집중", 
@@ -34,7 +33,6 @@ jobs:
         ]
     },
 EOT
-          # data.js 파일의 archiveData 시작 부분({ 바로 다음)에 새 데이터를 끼워넣습니다.
           sed -i '/var archiveData = {/r today_data.js' data.js
 
       - name: Commit and Push
