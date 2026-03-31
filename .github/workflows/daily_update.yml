@@ -1,0 +1,26 @@
+name: Daily Report Auto Update
+on:
+  schedule:
+    - cron: '0 0 * * *' # 매일 아침 9시 (한국시간 기준 00:00 UTC)
+  workflow_dispatch: # 지금 즉시 실행해보기 위한 수동 버튼
+
+jobs:
+  update-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Update data.js
+        run: |
+          # 1. 기존 데이터 가져오기 (마지막 } 제거 후 새 데이터 삽입)
+          # 차장님, 여기는 제가 드린 '오늘자 데이터'가 들어가는 자리입니다.
+          # 나중에는 여기에 '뉴스 수집 스크립트'를 연결할 겁니다.
+          echo "Data Update Start"
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add data.js
+          git commit -m "Auto Update: $(date +'%Y-%m-%d')" || echo "No changes to commit"
+          git push
