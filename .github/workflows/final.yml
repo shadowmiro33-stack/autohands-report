@@ -1,0 +1,27 @@
+name: final
+on:
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: update
+        run: |
+          cat <<EOT > today.js
+    "2026-04-01": {
+        "issue": "NO.34 (Final Success)",
+        "main": { "brand": "현대차", "title": "현대차그룹 SDV 가속화 및 OTA 적용", "link": "https://www.autodaily.co.kr" },
+        "ai": [], "auto": []
+    },
+EOT
+          sed -i '/var archiveData = {/r today.js' data.js
+      - name: push
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@bot.com"
+          git add .
+          git commit -m "update" || exit 0
+          git push origin main
