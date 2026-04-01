@@ -1,6 +1,6 @@
 name: Daily Report Update
 on:
-  workflow_dispatch: # 이 문구가 있어야 버튼이 나옵니다.
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
 
@@ -11,22 +11,24 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Netlify와의 정렬을 위해 전체 히스토리 가져오기
       
       - name: Update data.js
         run: |
           # data.js가 없으면 기본 구조 생성
           if [ ! -f data.js ]; then echo "var archiveData = {};" > data.js; fi
           
-          # 4월 1일자 최신 데이터 준비
+          # 4월 1일자 최신 데이터 (차장님 확정 구조)
           cat <<EOT > today.js
     "2026-04-01": {
-        "issue": "NO.34 (Emergency Fix)",
-        "main": { "brand": "현대차", "title": "현대차, SDV 가속화 위해 전 차종 OTA 기본 적용 발표", "link": "https://www.autodaily.co.kr" },
+        "issue": "NO.34 (Netlify Launch)",
+        "main": { "brand": "현대차", "title": "현대차, 전 차종 OTA 기본 적용 및 SDV 전환 가속", "link": "https://www.autodaily.co.kr" },
         "ai": [
-            { "brand": "OpenAI", "title": "기업용 GPT-5 파트너십 확대", "link": "https://openai.com" }
+            { "brand": "OpenAI", "title": "기업용 GPT-5 파트너십 확대 발표", "link": "https://openai.com" }
         ],
         "auto": [
-            { "brand": "인천항", "title": "중고차 수출 스마트 오토밸리 착공 가시화", "link": "https://www.kyeonggi.com" }
+            { "brand": "인천항", "title": "중고차 수출 오토밸리 조성 가시화", "link": "https://www.kyeonggi.com" }
         ]
     },
 EOT
@@ -35,8 +37,8 @@ EOT
 
       - name: Push to GitHub
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add .
-          git commit -m "Report Update 2026-04-01" || exit 0
-          git push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.js
+          git commit -m "Netlify Auto Update: 2026-04-01" || exit 0
+          git push origin main
