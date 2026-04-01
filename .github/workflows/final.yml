@@ -10,14 +10,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: update data
+      - name: update data (Safe Append)
         run: |
-          echo 'var archiveData = {"2026-04-01": {"issue": "NO.34 (Netlify)", "main": {"brand": "현대차", "title": "현대차그룹 SDV 가속화", "link": "https://www.autodaily.co.kr"}, "ai": [], "auto": []}};' > data.js
+          # 새 데이터를 별도 파일로 만듭니다.
+          cat <<EOT > new_data.txt
+    "2026-04-02": {
+        "issue": "NO.35 (Safe Mode)",
+        "main": { "brand": "테스트", "title": "데이터 누적 테스트 성공", "link": "#" },
+        "ai": [], "auto": []
+    },
+EOT
+          # data.js의 "var archiveData = {" 바로 아랫줄에 새 데이터를 안전하게 끼워 넣습니다.
+          sed -i '/var archiveData = {/r new_data.txt' data.js
       
       - name: push
         run: |
           git config user.name "bot"
           git config user.email "bot@bot.com"
           git add data.js
-          git commit -m "Update" || exit 0
+          git commit -m "Safe Update" || exit 0
           git push origin main
