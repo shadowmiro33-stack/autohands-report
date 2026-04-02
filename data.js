@@ -1,5 +1,9 @@
 var archiveData = {
-    "2026-04-02": {"issue": "NO.35 (Safe Mode)", "main": {"brand": "테스트", "title": "데이터 누적 성공", "link": "#"}, "ai": [], "auto": []},
+    "2026-04-02": {
+        "issue": "NO.35 (Safe Mode)",
+        "main": { "brand": "테스트", "title": "데이터 누적 성공", "link": "#" },
+        "ai": [], "auto": []
+    },
     "2026-04-01": {
         "issue": "NO.34 (Netlify Official)",
         "main": { "brand": "현대차", "title": "현대차그룹 SDV 가속화 및 OTA 적용", "link": "https://www.autodaily.co.kr" },
